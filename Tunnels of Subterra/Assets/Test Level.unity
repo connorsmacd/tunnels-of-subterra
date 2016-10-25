@@ -140,7 +140,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 3816df8a8ae360f4682383d8e15c338c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 25999f69df33a134197cc8974a5301bf, type: 2}
+      objectReference: {fileID: 2100000, guid: a8e01bad67619be4eb5e2bf6e34c56a7, type: 2}
     - target: {fileID: 2300000, guid: 3816df8a8ae360f4682383d8e15c338c, type: 3}
       propertyPath: m_LightProbeUsage
       value: 1
