@@ -3,13 +3,15 @@ using System.Collections;
 
 public class OffsetMaterial : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    private float scrollSpeed;
+    private Renderer rend;
+
+    void Start() {
+        rend = GetComponent<Renderer>();
+        scrollSpeed = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().levelSpeed / 20;
+    }
+
+    void Update() {
+        rend.material.mainTextureOffset += Vector2.up * scrollSpeed * Time.deltaTime;
+    }
 }
