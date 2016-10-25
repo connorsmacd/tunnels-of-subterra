@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour {
     public float enemyProbability = 0.05f;
     public int maxEnemies = 2;
 
+    public GameObject obs;
+
 	void Start () {
         InvokeRepeating("chooseElements", 2.0f, 0.1f);
 	}
@@ -18,13 +20,12 @@ public class LevelManager : MonoBehaviour {
     }
 
     void chooseElements() {
-        while(true) {
-            if (getRand() <= obstacleProbability) {
-                //generateObstacle();
-            }
-            if (getRand() <= enemyProbability) {
-                //generateEnemy();
-            }
+        if (getRand() <= obstacleProbability) {
+            //generateObstacle();
+            Instantiate(obs, new Vector3(0, -4.3f, 28.0f), new Quaternion());
+        }
+        if (getRand() <= enemyProbability) {
+            //generateEnemy();
         }
     }
 }
