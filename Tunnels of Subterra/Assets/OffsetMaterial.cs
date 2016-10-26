@@ -8,7 +8,8 @@ public class OffsetMaterial : MonoBehaviour {
 
     void Start() {
         rend = GetComponent<Renderer>();
-        scrollSpeed = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().levelSpeed / 20;
+        LevelManager lm = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+        scrollSpeed = lm.levelSpeed / rend.material.mainTextureScale.y;
     }
 
     void Update() {

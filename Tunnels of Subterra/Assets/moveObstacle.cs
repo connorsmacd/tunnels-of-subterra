@@ -5,10 +5,10 @@ public class moveObstacle : MonoBehaviour {
 
     private float obstacleSpeed;
     private float zOrigin;
-    public float dist = 28.0f;
+    public float dist = 70.0f;
 
 	void Start () {
-        obstacleSpeed = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().levelSpeed;
+        obstacleSpeed = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().levelSpeed / 5;
         zOrigin = transform.position.z;
 	}
 	
