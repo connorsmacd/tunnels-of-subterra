@@ -1,0 +1,17 @@
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/obj/Debug/Assembly-CSharp-firstpass.dll
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/obj/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/UnityEngine.dll
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/UnityEditor.dll
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/Mono.Cecil.dll
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/Unity.DataContract.dll
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/Connor/Documents/tunnels-of-subterra/Tunnels of Subterra/Temp/bin/Debug/Mono.Cecil.Mdb.dll

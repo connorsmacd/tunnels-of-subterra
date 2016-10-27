@@ -9,9 +9,10 @@ public class LevelManager : MonoBehaviour {
     public float enemyProbability = 0.05f;
     public int maxEnemies = 2;
 
-    public GameObject obs;
+	private ObstacleManager obstacleManager;
 
 	void Start () {
+		obstacleManager = gameObject.GetComponent<ObstacleManager>();
         InvokeRepeating("chooseElements", 2.0f, 0.1f);
 	}
 
@@ -20,9 +21,9 @@ public class LevelManager : MonoBehaviour {
     }
 
     void chooseElements() {
-        if (getRand() <= obstacleProbability) {
-            //generateObstacle();
-            Instantiate(obs, new Vector3(0, -4.3f, 28.0f), new Quaternion());
+		int obstacleCount = GameObject.FindGameObjectsWithTag("Obstacle").Length;
+		if ((getRand() <= obstacleProbability) && (obstacleCount <= maxObstacles)) {
+			obstacleManager.generateObstacle();
         }
         if (getRand() <= enemyProbability) {
             //generateEnemy();
