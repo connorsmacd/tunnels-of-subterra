@@ -9,6 +9,8 @@ TagManager:
   - EnemyManager
   - Obstacle
   - Enemy
+  - Score
+  - Health
   layers:
   - Default
   - TransparentFX
