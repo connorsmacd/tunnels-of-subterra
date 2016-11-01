@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour {
     public int maxObstacles = 3;
     public float enemyProbability = 0.05f;
     public int maxEnemies = 2;
+    public Material levelMaterial;
 
 	private ObstacleManager obstacleManager;
 

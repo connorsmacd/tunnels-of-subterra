@@ -4,43 +4,53 @@ using System.Collections.Generic;
 
 public class TunnelManager : MonoBehaviour {
 
-    public GameObject tunnelObjectNormal;
-    public GameObject tunnelObjectReflected;
+    public GameObject tunnelSegmentNormal;
+    public GameObject tunnelSegmentReflected;
+    public GameObject parent;
+    public float distanceFromFog = 5.0f;
     private Queue<GameObject> segmentQueue = new Queue<GameObject>();
     private bool reflect;
-	private float frontFogZ;
-    private float rearFogZ;
     private float currentSegmentZ;
     private float segmentLength;
 
-    void addNewSegment() {
+    void addNewSegment () {
         currentSegmentZ += segmentLength;
         Vector3 position = new Vector3(0, 0, currentSegmentZ);
         GameObject newSegment;
+        Quaternion rotation = new Quaternion();
         if (reflect) {
-            newSegment = tunnelObjectNormal;
+            newSegment = (GameObject) Instantiate(tunnelSegmentNormal, position, rotation);
             reflect = false;
         } else {
-            newSegment = tunnelObjectReflected;
+            rotation = Quaternion.Euler(0, 0, 180);
+            newSegment = (GameObject) Instantiate(tunnelSegmentReflected, position, rotation);
             reflect = true;
         }
-        Instantiate(newSegment, position, new Quaternion());
+        newSegment.transform.parent = parent.transform;
+        segmentQueue.Enqueue(newSegment);
+    }
+
+    void removeOldSegment () {
+        Destroy(segmentQueue.Dequeue());
     }
 
 	void Start () {
-        Instantiate(tunnelObjectNormal, new Vector3(0, 0, 0), new Quaternion());
-        segmentQueue.Enqueue(tunnelObjectNormal);
-        frontFogZ = GameObject.FindGameObjectWithTag("Player").transform.FindChild("FrontFog").transform.position.z;
-        rearFogZ = GameObject.FindGameObjectWithTag("Player").transform.FindChild("RearFog").transform.position.z;
         reflect = false;
         currentSegmentZ = 0.0f;
+        GameObject firstSegment = (GameObject) Instantiate(tunnelSegmentNormal, new Vector3(0, currentSegmentZ, 0), new Quaternion());
+        firstSegment.transform.parent = parent.transform;
+        segmentQueue.Enqueue(firstSegment);
         segmentLength = segmentQueue.Peek().transform.GetChild(2).GetComponent<MeshRenderer>().bounds.size.y;
     }
 
 	void Update () {
-        frontFogZ = GameObject.FindGameObjectWithTag("Player").transform.FindChild("FrontFog").transform.position.z;
-        if ((frontFogZ - currentSegmentZ) >= (segmentLength / 2)) {
+        float frontFogZ = GameObject.FindGameObjectWithTag("Player").transform.FindChild("FrontFog").transform.position.z;
+        float rearFogZ = GameObject.FindGameObjectWithTag("Player").transform.FindChild("RearFog").transform.position.z;
+        if ((frontFogZ - currentSegmentZ) >= ((segmentLength / 2) - distanceFromFog)) {
             addNewSegment();
+        }
+        if ((rearFogZ - segmentQueue.Peek().transform.position.z) >= (segmentLength / 2)) {
+            removeOldSegment();
         }
 	}
 }
