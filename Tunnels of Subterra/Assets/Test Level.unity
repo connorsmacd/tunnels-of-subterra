@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.8575135, g: 0.87503517, b: 0.8296416, a: 1}
+  m_IndirectSpecularColor: {r: 0.85750866, g: 0.8750317, b: 0.8296416, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -205,6 +205,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 256843455}
   - 114: {fileID: 256843454}
+  - 114: {fileID: 256843456}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -242,6 +243,22 @@ Transform:
   - {fileID: 491191013}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &256843456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 256843453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 026e745db1def403a826a157112a8f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  condition: 0
+  fullCondition: 100
+  armourModifier: 0
+  score: 0
+  experience: 0
 --- !u!1 &337178071
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +492,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 572461728}
-  serializedVersion: 4
+  serializedVersion: 2
   lengthInSec: 0.1
   startDelay:
     scalar: 0
@@ -513,13 +530,12 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
+  randomSeed: 63433504
   looping: 1
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1
-  autoRandomSeed: 0
   scalingMode: 1
-  randomSeed: 63433504
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -2290,7 +2306,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 666792311}
-  serializedVersion: 4
+  serializedVersion: 2
   lengthInSec: 0.1
   startDelay:
     scalar: 0
@@ -2328,13 +2344,12 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
+  randomSeed: 63433504
   looping: 1
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1
-  autoRandomSeed: 0
   scalingMode: 1
-  randomSeed: 63433504
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -4129,11 +4144,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacles:
   - obstacleObject: {fileID: 100000, guid: b83fadc2024854c4c803a014a89f0dec, type: 3}
-    roughPosition: {x: -3.19, y: -2.9}
+    roughCenter: {x: 0, y: 0}
     orientation: {x: -90, y: 0, z: 0}
     xVariance: 2.5
   - obstacleObject: {fileID: 100012, guid: 754387f6a5ac4ae45b71402358e4b26b, type: 3}
-    roughPosition: {x: -0.5, y: 4.5}
+    roughCenter: {x: 0, y: 0}
     orientation: {x: 90, y: 0, z: 0}
     xVariance: 2.5
   distanceFromFog: 10
