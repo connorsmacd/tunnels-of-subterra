@@ -326,10 +326,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 491191012}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.8, y: 9, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 6, y: 9, z: 81.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children: []
   m_Father: {fileID: 256843455}
   m_RootOrder: 5
@@ -345,7 +345,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 8
   m_Range: 80
-  m_SpotAngle: 30
+  m_SpotAngle: 8
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
@@ -376,7 +376,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 532025502}
   m_Layer: 0
-  m_Name: Tunnel
+  m_Name: TunnelSegments
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4098,7 +4098,7 @@ MonoBehaviour:
   maxObstacles: 12
   enemyProbability: 0.05
   maxEnemies: 2
-  levelMaterial: {fileID: 2100000, guid: 34dcdb941e8d60d4d806f69888618693, type: 2}
+  levelMaterial: {fileID: 2100000, guid: 89c98795685706c4db6ead19cd05ace1, type: 2}
 --- !u!114 &711547608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4115,7 +4115,7 @@ MonoBehaviour:
   tunnelSegmentReflected: {fileID: 1000013070896780, guid: 4a7fce15f2b7ee741b072d425c6d69d8,
     type: 2}
   parent: {fileID: 532025501}
-  distanceFromFog: 5
+  distanceFromFog: 10
 --- !u!114 &711547609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4136,7 +4136,7 @@ MonoBehaviour:
     roughPosition: {x: -0.5, y: 5}
     orientation: {x: 90, y: 0, z: 0}
     xVariance: 2.5
-  distanceFromFog: 5
+  distanceFromFog: 10
   parent: {fileID: 1204458135}
 --- !u!1 &841364339
 GameObject:

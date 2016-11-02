@@ -40,7 +40,7 @@ public class TunnelManager : MonoBehaviour {
         GameObject firstSegment = (GameObject) Instantiate(tunnelSegmentNormal, new Vector3(0, currentSegmentZ, 0), new Quaternion());
         firstSegment.transform.parent = parent.transform;
         segmentQueue.Enqueue(firstSegment);
-        segmentLength = segmentQueue.Peek().transform.GetChild(2).GetComponent<MeshRenderer>().bounds.size.y;
+        segmentLength = segmentQueue.Peek().transform.GetChild(2).GetComponent<MeshRenderer>().bounds.size.z;
     }
 
 	void Update () {
