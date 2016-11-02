@@ -56,13 +56,13 @@ GraphicsSettings:
     useReflectionProbeBlending: 1
   m_BuildTargetShaderSettings: []
   m_LightmapStripping: 0
-  m_FogStripping: 0
+  m_FogStripping: 1
   m_LightmapKeepPlain: 1
   m_LightmapKeepDirCombined: 1
   m_LightmapKeepDirSeparate: 1
   m_LightmapKeepDynamicPlain: 1
   m_LightmapKeepDynamicDirCombined: 1
   m_LightmapKeepDynamicDirSeparate: 1
-  m_FogKeepLinear: 1
-  m_FogKeepExp: 1
+  m_FogKeepLinear: 0
+  m_FogKeepExp: 0
   m_FogKeepExp2: 1
