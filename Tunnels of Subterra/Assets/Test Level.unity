@@ -5992,11 +5992,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacles:
   - obstacleObject: {fileID: 100000, guid: b83fadc2024854c4c803a014a89f0dec, type: 3}
-    roughCenter: {x: 0, y: 0}
+    roughCenter: {x: -3.13, y: -3}
     orientation: {x: -90, y: 0, z: 0}
     xVariance: 2.5
   - obstacleObject: {fileID: 100012, guid: 754387f6a5ac4ae45b71402358e4b26b, type: 3}
-    roughCenter: {x: 0, y: 0}
+    roughCenter: {x: -0.78, y: 4.5}
     orientation: {x: 90, y: 0, z: 0}
     xVariance: 2.5
   distanceFromFog: 10
