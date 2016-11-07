@@ -25,7 +25,7 @@ public class ObstacleManager : MonoBehaviour {
 
 	// A list of defined obstacles
 	public List<Obstacle> obstacles;
-	// Distance from front fog that obstacles are generated
+	// Distance from front fog that obstacles are generated at
     public float distanceFromFog = 5.0f;
 	// Parent of active obstacles
     public GameObject parent;
