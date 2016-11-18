@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 462168}
   - 33: {fileID: 3362168}
   - 23: {fileID: 2362168}
+  - 114: {fileID: 114000011463439350}
+  - 65: {fileID: 65000013397584252}
   m_Layer: 0
   m_Name: Crossed Wrenches Red
   m_TagString: PowerUp
@@ -77,3 +79,28 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 162168}
   m_IsPrefabParent: 1
+--- !u!65 &65000013397584252
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162168}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19791138, y: 0.20419598, z: 0.05598971}
+  m_Center: {x: 0.0039617196, y: 0.007103514, z: 0.0045187976}
+--- !u!114 &114000011463439350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3061e235a9bf04996145df3e551a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healFor: 25
+  scoreValue: 500

@@ -4,20 +4,43 @@ using System.Collections;
 public class PlayerCharacter : MonoBehaviour {
 
 	public float condition;
+    public float maxCondition = 100.0f;
 	public float fullCondition = 100.0f;
-	public float armourModifier;
+	public float armourModifier = 1;
 	public int score;
 	public int experience;
 
-	void doDamage (float damage) {
+	public void doDamage (float damage) {
 		condition -= (damage * armourModifier);
 	}
 
-	void modifyScore (int addToScore) {
+    public void heal(float hitpoints)
+    {
+        if (fullCondition + hitpoints < maxCondition)
+        {
+            fullCondition += hitpoints;
+        }
+        else
+        {
+            fullCondition = maxCondition;
+        }
+    }
+
+    public void modifyScore (int addToScore) {
 		score += addToScore;
 	}
 
 	void startLevel () {
 		condition = fullCondition;
 	}
+
+    public float getHealth()
+    {
+        return fullCondition;
+    }
+
+    public int getScore()
+    {
+        return score;
+    }
 }
