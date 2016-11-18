@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Score
   - Health
+  - PowerUp
   layers:
   - Default
   - TransparentFX

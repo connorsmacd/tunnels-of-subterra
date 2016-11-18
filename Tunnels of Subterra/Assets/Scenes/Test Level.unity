@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.8575135, g: 0.87503517, b: 0.8296416, a: 1}
+  m_IndirectSpecularColor: {r: 0.8575093, g: 0.8750318, b: 0.8296419, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -6008,6 +6008,7 @@ GameObject:
   - 114: {fileID: 711547607}
   - 114: {fileID: 711547609}
   - 114: {fileID: 711547608}
+  - 114: {fileID: 711547610}
   m_Layer: 0
   m_Name: Abstract
   m_TagString: LevelManager
@@ -6044,6 +6045,8 @@ MonoBehaviour:
   maxObstacles: 12
   enemyProbability: 0.05
   maxEnemies: 2
+  powerupProbabiltiy: 0.1
+  maxPowerUp: 2
   levelMaterial: {fileID: 2100000, guid: 89c98795685706c4db6ead19cd05ace1, type: 2}
 --- !u!114 &711547608
 MonoBehaviour:
@@ -6084,6 +6087,28 @@ MonoBehaviour:
     xVariance: 2.5
   distanceFromFog: 10
   parent: {fileID: 1204458135}
+--- !u!114 &711547610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 711547605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c22039e4b794a468029749ccd527fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUps:
+  - powerUpObject: {fileID: 162168, guid: cc34854c0aa015547b63cc8d985607e8, type: 2}
+    roughCenter: {x: 0, y: 0}
+    orientation: {x: 0, y: 0, z: 0}
+    xVariance: 0
+  - powerUpObject: {fileID: 109860, guid: df0c59ebb296e374fbbcf1569a576be8, type: 2}
+    roughCenter: {x: 0, y: 0}
+    orientation: {x: 0, y: 0, z: 0}
+    xVariance: 0
+  distanceFromFog: 5
+  parent: {fileID: 1711861941}
 --- !u!1 &733318410
 GameObject:
   m_ObjectHideFlags: 0
@@ -8266,6 +8291,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!1 &1711861941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1711861943}
+  m_Layer: 0
+  m_Name: PowerUps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1711861943
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1711861941}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.8429489, y: -1.0487618, z: 12.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1 &1741323930
 GameObject:
   m_ObjectHideFlags: 0
