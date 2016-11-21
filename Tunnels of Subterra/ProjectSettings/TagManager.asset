@@ -12,6 +12,8 @@ TagManager:
   - Score
   - Health
   - PowerUp
+  - Fire
+  - Ship
   layers:
   - Default
   - TransparentFX

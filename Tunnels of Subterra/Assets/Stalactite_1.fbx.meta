@@ -36,6 +36,7 @@ ModelImporter:
     4300004: Cylinder_MeshPart1
     4300006: Cylinder_MeshPart2
     4300008: Cylinder_MeshPart3
+    6400000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -62,7 +63,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

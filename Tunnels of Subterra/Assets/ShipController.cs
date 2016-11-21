@@ -15,7 +15,7 @@ public class ShipController : MonoBehaviour {
     public float maxSpeed = 10f;
     public float smoothOffset = 0.25f;
     public float cursorOffset = -0.5f;
-
+    private GameObject player;
     private Vector2 boundsExtents;
 
     // Use this for initialization
@@ -23,6 +23,7 @@ public class ShipController : MonoBehaviour {
         Bounds bounds = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<TunnelManager>()
                         .tunnelSegmentNormal.transform.GetChild(2).GetComponent<MeshRenderer>().bounds;
         boundsExtents = bounds.extents;
+        player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
@@ -59,5 +60,15 @@ public class ShipController : MonoBehaviour {
             translateVector.z = ySpeed * Time.deltaTime;
 
         transform.Translate(translateVector);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        print("Player collided with obstacle");
+        if (player.GetComponent<PlayerCharacter>().fullCondition > 0)
+        {
+            player.GetComponent<PlayerCharacter>().doDamage(10.0f);
+            GameObject.FindGameObjectWithTag("Ship").GetComponent<ParticleSystem>().Play();
+        }
     }
 }

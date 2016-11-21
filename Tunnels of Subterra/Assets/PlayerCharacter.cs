@@ -11,7 +11,7 @@ public class PlayerCharacter : MonoBehaviour {
 	public int experience;
 
 	public void doDamage (float damage) {
-		condition -= (damage * armourModifier);
+		fullCondition -= (damage * armourModifier);
 	}
 
     public void heal(float hitpoints)
