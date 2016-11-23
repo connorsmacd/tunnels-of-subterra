@@ -14,6 +14,7 @@ TagManager:
   - PowerUp
   - Fire
   - Ship
+  - Dangler
   layers:
   - Default
   - TransparentFX
