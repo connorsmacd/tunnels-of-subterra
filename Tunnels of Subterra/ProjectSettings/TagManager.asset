@@ -17,6 +17,7 @@ TagManager:
   - Dangler
   - Canvas
   - GameOver
+  - HangPoint
   layers:
   - Default
   - TransparentFX
