@@ -72,8 +72,6 @@ public class ShipController : MonoBehaviour {
                 player.GetComponent<PlayerCharacter>().doDamage(10.0f);
                 GameObject.FindGameObjectWithTag("Ship").GetComponent<ParticleSystem>().Play();
             }
-        } else if (collider.tag == "Dangler") {
-            collider.gameObject.GetComponent<DanglerAttack1>().setHanging();
         }
     }
 }
