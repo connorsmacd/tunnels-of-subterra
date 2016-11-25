@@ -5,7 +5,7 @@ using System.Collections;
 public class HUD : MonoBehaviour {
 
     //private GameObject health, score;
-    private Text health, score;
+    private Text health, score, prevScore;
     //private int pts = 0;
     private PlayerCharacter player;
     
@@ -14,9 +14,12 @@ public class HUD : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCharacter>();
         health = GameObject.FindGameObjectWithTag("Health").GetComponent<Text>() as Text;
         score = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>() as Text;
+        prevScore = GameObject.FindGameObjectWithTag("PrevScore").GetComponent<Text>() as Text;
+        prevScore.text = "Last Run's Score: " +PlayerPrefs.GetFloat("previousScore");
         health.text = "Health: " +player.getHealth().ToString();
         score.text = "Score: " +0.ToString();
         health.color = new Color(0f, 255f / 255f, 65f / 255f);
+
 
 
         
@@ -49,7 +52,10 @@ public class HUD : MonoBehaviour {
         Destroy(GameObject.FindGameObjectWithTag("Health"));
         Destroy(GameObject.FindGameObjectWithTag("Score"));
         StartCoroutine(endGame());
+        PlayerPrefs.SetFloat("previousScore", finalScore);
     }
+
+    //waits for 5 seconds then returns the user to the main menu
     IEnumerator endGame()
     {
         yield return new WaitForSecondsRealtime(5);

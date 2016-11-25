@@ -18,6 +18,7 @@ TagManager:
   - Canvas
   - GameOver
   - HangPoint
+  - PrevScore
   layers:
   - Default
   - TransparentFX
