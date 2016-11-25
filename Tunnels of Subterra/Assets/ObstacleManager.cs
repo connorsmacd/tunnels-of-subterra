@@ -62,12 +62,10 @@ public class ObstacleManager : MonoBehaviour {
         float rearFogZ = GameObject.FindGameObjectWithTag("Player")
 						 .transform.FindChild("RearFog").transform.position.z;
 		// Check if objects are in queue
-        if (obstacleObjectQueue.Count > 0) {
-			// See if object is past rear fog
-            if ((rearFogZ - obstacleObjectQueue.Peek().transform.position.z) >= 0) {
-				// Destroy object at front of queue
-                Destroy(obstacleObjectQueue.Dequeue());
-            }
+		// See if object is past rear fog
+        while ((obstacleObjectQueue.Count > 0) && ((rearFogZ - obstacleObjectQueue.Peek().transform.position.z) >= 0)) {
+			// Destroy object at front of queue
+            Destroy(obstacleObjectQueue.Dequeue());
         }
     }
 }

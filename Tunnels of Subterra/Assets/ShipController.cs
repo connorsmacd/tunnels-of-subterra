@@ -13,6 +13,8 @@ public class ShipController : MonoBehaviour {
     //bounds on the amount the ship can move left/right & up/down (cheaper than collison detection)
     public float speedFactor = 0.10f;
     public float maxSpeed = 10f;
+    public float xSpeed;
+    public float ySpeed;
     public float smoothOffset = 0.25f;
     public float cursorOffset = -0.5f;
     private GameObject player;
@@ -33,11 +35,12 @@ public class ShipController : MonoBehaviour {
         Ray aimRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector2 destination = (Vector2) aimRay.GetPoint(Vector3.Distance(shipPosition, aimRay.origin)) + new Vector2(0, cursorOffset);
         Vector3 translateVector = new Vector3();
+
         float xExtents = Mathf.Sqrt((boundsExtents.x * boundsExtents.x) * (1 - ((shipPosition.y * shipPosition.y) / (boundsExtents.y * boundsExtents.y))));
         float yExtents = Mathf.Sqrt((boundsExtents.y * boundsExtents.y) * (1 - ((shipPosition.x * shipPosition.x) / (boundsExtents.x * boundsExtents.x))));
 
-        float xSpeed = speedFactor * (destination.x - shipPosition.x);
-        float ySpeed = speedFactor * (destination.y - shipPosition.y);
+        xSpeed = speedFactor * (destination.x - shipPosition.x);
+        ySpeed = speedFactor * (destination.y - shipPosition.y);
 
         if (xSpeed < 0)
             xSpeed = Mathf.Max(xSpeed, -maxSpeed);
@@ -62,13 +65,13 @@ public class ShipController : MonoBehaviour {
         transform.Translate(translateVector);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        print("Player collided with obstacle");
-        if (player.GetComponent<PlayerCharacter>().fullCondition > 0)
-        {
-            player.GetComponent<PlayerCharacter>().doDamage(10.0f);
-            GameObject.FindGameObjectWithTag("Ship").GetComponent<ParticleSystem>().Play();
+    void OnTriggerEnter(Collider collider) {
+        if (collider.tag == "Obstacle") {
+            print("Player collided with obstacle");
+            if (player.GetComponent<PlayerCharacter>().fullCondition > 0) {
+                player.GetComponent<PlayerCharacter>().doDamage(10.0f);
+                GameObject.FindGameObjectWithTag("Ship").GetComponent<ParticleSystem>().Play();
+            }
         }
     }
 }
