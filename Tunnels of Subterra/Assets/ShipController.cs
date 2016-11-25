@@ -15,6 +15,7 @@ public class ShipController : MonoBehaviour {
     public float maxSpeed = 10f;
     public float xSpeed;
     public float ySpeed;
+    public Vector2 dest;
     public float smoothOffset = 0.25f;
     public float cursorOffset = -0.5f;
     private GameObject player;
@@ -31,10 +32,12 @@ public class ShipController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Vector2 shipPosition = transform.position;
+        Vector3 shipPosition = transform.position;
         Ray aimRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector2 destination = (Vector2) aimRay.GetPoint(Vector3.Distance(shipPosition, aimRay.origin)) + new Vector2(0, cursorOffset);
         Vector3 translateVector = new Vector3();
+
+        dest = destination;
 
         float xExtents = Mathf.Sqrt((boundsExtents.x * boundsExtents.x) * (1 - ((shipPosition.y * shipPosition.y) / (boundsExtents.y * boundsExtents.y))));
         float yExtents = Mathf.Sqrt((boundsExtents.y * boundsExtents.y) * (1 - ((shipPosition.x * shipPosition.x) / (boundsExtents.x * boundsExtents.x))));
