@@ -10,14 +10,15 @@ using System.Collections;
 
 public class ShipController : MonoBehaviour {
 
-    //bounds on the amount the ship can move left/right & up/down (cheaper than collison detection)
-    public float speedFactor = 0.10f;
+    public float nimbilityFactor = 0.10f;
     public float maxSpeed = 10f;
-    public float xSpeed;
-    public float ySpeed;
-    public Vector2 dest;
-    public float smoothOffset = 0.25f;
     public float cursorOffset = -0.5f;
+
+    public float xDeltaSpeed { get; set; }
+    public float yDeltaSpeed { get; set; }
+    public float xSpeedLast { get; set; }
+    public float ySpeedLast { get; set; }
+
     private GameObject player;
     private Vector2 boundsExtents;
 
@@ -27,23 +28,24 @@ public class ShipController : MonoBehaviour {
                         .tunnelSegmentNormal.transform.GetChild(2).GetComponent<MeshRenderer>().bounds;
         boundsExtents = bounds.extents;
         player = GameObject.FindGameObjectWithTag("Player");
+        xDeltaSpeed = 0.0f;
+        yDeltaSpeed = 0.0f;
+        xSpeedLast = 0.0f;
+        ySpeedLast = 0.0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
         Vector3 shipPosition = transform.position;
         Ray aimRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector2 destination = (Vector2) aimRay.GetPoint(Vector3.Distance(shipPosition, aimRay.origin)) + new Vector2(0, cursorOffset);
         Vector3 translateVector = new Vector3();
 
-        dest = destination;
-
         float xExtents = Mathf.Sqrt((boundsExtents.x * boundsExtents.x) * (1 - ((shipPosition.y * shipPosition.y) / (boundsExtents.y * boundsExtents.y))));
         float yExtents = Mathf.Sqrt((boundsExtents.y * boundsExtents.y) * (1 - ((shipPosition.x * shipPosition.x) / (boundsExtents.x * boundsExtents.x))));
 
-        xSpeed = speedFactor * (destination.x - shipPosition.x);
-        ySpeed = speedFactor * (destination.y - shipPosition.y);
+        float xSpeed = nimbilityFactor * (destination.x - shipPosition.x);
+        float ySpeed = nimbilityFactor * (destination.y - shipPosition.y);
 
         if (xSpeed < 0)
             xSpeed = Mathf.Max(xSpeed, -maxSpeed);
@@ -54,6 +56,12 @@ public class ShipController : MonoBehaviour {
             ySpeed = Mathf.Max(ySpeed, -maxSpeed);
         else if (ySpeed > 0)
             ySpeed = Mathf.Min(ySpeed, maxSpeed);
+
+        xDeltaSpeed = xSpeedLast - xSpeed;
+        yDeltaSpeed = ySpeedLast - ySpeed;
+
+        xSpeedLast = xSpeed;
+        ySpeedLast = ySpeed; 
 
         if ((shipPosition.x > destination.x) && (shipPosition.x > -xExtents))
             translateVector.x = xSpeed * Time.deltaTime;

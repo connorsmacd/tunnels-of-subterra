@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /*
  * Script: LevelManager.cs
@@ -11,11 +12,11 @@ using System.Collections;
 public class LevelManager : MonoBehaviour {
 
 	// Speed that the ship will travel at
-    public float levelSpeed = 1.5f;
+    public float levelSpeed = 100.0f;
 	// Probability of an obstacle being generated per 100 milliseconds
-    public float obstacleProbability = 0.05f;
+    public float obstacleProbability = 0.1f;
 	// Maximum number of obstacles to be present at a time
-    public int maxObstacles = 3;
+    public int maxObstacles = 12;
 	// Probability of an enemy being generated per 100 milliseconds
     public float enemyProbability = 0.05f;
 	// Maximum number of enemies to be present at a time
@@ -25,18 +26,31 @@ public class LevelManager : MonoBehaviour {
 	// Material for the level
     public Material levelMaterial;
 
-	// ObstacleManager use when obstacles need to be generated
-	private ObstacleManager obstacleManager;
+    public List<Element> obstacleList;
+    public GameObject obstacleParent;
+    public List<Element> powerUpList;
+    public GameObject powerUpParent;
+    public List<Element> enemyList;
+    public GameObject enemyParent;
 
-    private PowerUpManager powerUpManager;
+    private ElementManager obstacleManager;
+    private ElementManager powerUpManager;
+    private ElementManager enemyManager;
 
     // Initilizes the obstacle manager and calls the repeated function
     void Start () {
-		obstacleManager = gameObject.GetComponent<ObstacleManager>();
-        powerUpManager = gameObject.GetComponent<PowerUpManager>();
 		// Wait two seconds, then call every 100 milliseconds
         InvokeRepeating("chooseElements", 2.0f, 0.1f);
-	}
+        obstacleManager = gameObject.AddComponent<ElementManager>();
+        obstacleManager.elements = obstacleList;
+        obstacleManager.parent = obstacleParent;
+        powerUpManager = gameObject.AddComponent<ElementManager>();
+        powerUpManager.elements = powerUpList;
+        powerUpManager.parent = powerUpParent;
+        enemyManager = gameObject.AddComponent<ElementManager>();
+        enemyManager.elements = enemyList;
+        enemyManager.parent = enemyParent;
+    }
 
 	// Returns a random float between 0.0 and 1.0
     float getRand() {
@@ -48,17 +62,17 @@ public class LevelManager : MonoBehaviour {
 		// Get current number of active obstacles
 		int obstacleCount = GameObject.FindGameObjectsWithTag("Obstacle").Length;
         int powerUpCount = GameObject.FindGameObjectsWithTag("PowerUp").Length;
+        int enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         // Check if obstacle is to be generated
         if ((getRand() <= obstacleProbability) && (obstacleCount <= maxObstacles)) {
-			obstacleManager.generateObstacle();
+			obstacleManager.generateElement();
         }
-		// Check if enemy is to be generated
-        if (getRand() <= enemyProbability) {
-            //generateEnemy();
+        if (getRand() <= powerupProbabiltiy && powerUpCount < maxPowerUp) {
+            powerUpManager.generateElement();
         }
-        if (getRand() <= powerupProbabiltiy && powerUpCount < maxPowerUp)
-        {
-            powerUpManager.generatePowerUp();
+        // Check if enemy is to be generated
+        if ((getRand() <= enemyProbability) && (enemyCount <= maxEnemies)) {
+            enemyManager.generateElement();
         }
     }
 }
