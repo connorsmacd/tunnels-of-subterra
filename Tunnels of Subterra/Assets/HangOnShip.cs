@@ -7,7 +7,7 @@ public class HangOnShip : MonoBehaviour {
         if (collider.tag == "HangPoint") {
             transform.GetComponent<Collider>().isTrigger = false;
             Transform hangTransform = collider.transform.GetChild(0).transform;
-            transform.parent.GetComponent<DanglerAttack1>().setHanging(hangTransform);
+            transform.parent.GetComponent<DanglerAttack1>().beginHanging(hangTransform);
         }
     }
 }
