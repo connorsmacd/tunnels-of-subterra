@@ -19,6 +19,15 @@ TagManager:
   - GameOver
   - HangPoint
   - PrevScore
+  - MainMenuView
+  - BeforeStartView
+  - HighScoresView
+  - InputName
+  - First
+  - Second
+  - Third
+  - Fourth
+  - Fifth
   layers:
   - Default
   - TransparentFX
