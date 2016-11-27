@@ -9,6 +9,7 @@ public class PlayerCharacter : MonoBehaviour {
 	public float armourModifier = 1;
 	public int score;
 	public int experience;
+    public string playerName;
 
 	public void doDamage (float damage) {
 		fullCondition -= (damage * armourModifier);
@@ -42,5 +43,13 @@ public class PlayerCharacter : MonoBehaviour {
     public int getScore()
     {
         return score;
+    }
+    public void setName(string n)
+    {
+        playerName = n;
+    }
+    public string getName()
+    {
+        return playerName;
     }
 }

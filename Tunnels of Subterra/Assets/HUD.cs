@@ -53,6 +53,17 @@ public class HUD : MonoBehaviour {
         Destroy(GameObject.FindGameObjectWithTag("Score"));
         StartCoroutine(endGame());
         PlayerPrefs.SetFloat("previousScore", finalScore);
+
+        float[] scores = PlayerPrefsX.GetFloatArray("Scores");
+        for(int j = 0; j < scores.Length; j++)
+        {
+            if (finalScore > scores[j])
+            {
+                scores[j] = finalScore;
+                break;
+            }
+        }
+        PlayerPrefsX.SetFloatArray("Scores", scores);
     }
 
     //waits for 5 seconds then returns the user to the main menu

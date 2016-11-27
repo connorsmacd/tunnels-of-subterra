@@ -26,7 +26,8 @@ public class ShipController : MonoBehaviour {
                         .tunnelSegmentNormal.transform.GetChild(2).GetComponent<MeshRenderer>().bounds;
         boundsExtents = bounds.extents;
         player = GameObject.FindGameObjectWithTag("Player");
-	}
+        GameObject.FindGameObjectWithTag("Ship").GetComponentInChildren<ParticleSystem>().Play();
+    }
 	
 	// Update is called once per frame
 	void Update () {
