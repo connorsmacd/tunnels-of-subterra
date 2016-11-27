@@ -41,29 +41,52 @@ public class HUD : MonoBehaviour {
         {
             //player iz ded
             player.heal(100f);
-            playerDied(player.getScore());
+            playerDied(PlayerPrefs.GetString("CurrentName", "No Name"), player.getScore());
         }
         
     }
-    void playerDied(float finalScore)
+    void playerDied(string name, float finalScore)
     {
         Text gameOver = GameObject.FindGameObjectWithTag("GameOver").GetComponent<Text>();
         gameOver.text = "GAME OVER\n Final Score: " + finalScore;
-        Destroy(GameObject.FindGameObjectWithTag("Health"));
-        Destroy(GameObject.FindGameObjectWithTag("Score"));
+        GameObject temp1 = GameObject.FindGameObjectWithTag("Health");
+        temp1.SetActive(false);
+        GameObject temp2 = GameObject.FindGameObjectWithTag("Score");
+        temp2.SetActive(false);
         StartCoroutine(endGame());
         PlayerPrefs.SetFloat("previousScore", finalScore);
 
         float[] scores = PlayerPrefsX.GetFloatArray("Scores");
-        for(int j = 0; j < scores.Length; j++)
+        string[] names = PlayerPrefsX.GetStringArray("Names");
+
+        bool higher = false;
+        if (finalScore > scores[scores.Length - 1])
         {
-            if (finalScore > scores[j])
+            //replace last element with new high score
+            scores[scores.Length - 1] = finalScore;
+            names[names.Length - 1] = name;
+            higher = true;
+        }
+
+        if (higher) { 
+            for (int j = scores.Length-1; j >0; j--)
             {
-                scores[j] = finalScore;
-                break;
+                //find correct position for new score
+                //assumes score array is already sorted
+                if (scores[j -1] < scores[j])
+                {
+                    float temp = scores[j];
+                    string tempName = names[j];
+                    scores[j] = scores[j - 1];
+                    names[j] = names[j - 1];
+                    scores[j - 1] = temp;
+                    names[j - 1] = tempName;
+                }
             }
         }
+
         PlayerPrefsX.SetFloatArray("Scores", scores);
+        PlayerPrefsX.SetStringArray("Names", names);
     }
 
     //waits for 5 seconds then returns the user to the main menu
