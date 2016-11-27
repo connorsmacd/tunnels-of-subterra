@@ -28,3 +28,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+*.dll
+Tunnels of Subterra/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll.mdb
