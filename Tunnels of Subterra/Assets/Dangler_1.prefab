@@ -1860,7 +1860,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 10
   scoreValue: 50
-  bloodEffect: {fileID: 0}
+  bloodEffect: {fileID: 1000012654378258, guid: 2923a8204389fc44d892c4297eec6931,
+    type: 2}
 --- !u!114 &114000013758434644
 MonoBehaviour:
   m_ObjectHideFlags: 1

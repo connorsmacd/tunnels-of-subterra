@@ -9,7 +9,7 @@ using System.Collections;
  */
 public class MovePlayer : MonoBehaviour {
 
-    private float playerSpeed;
+    public float playerSpeed { get; set; }
 
     void Start() {
         playerSpeed = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().levelSpeed;

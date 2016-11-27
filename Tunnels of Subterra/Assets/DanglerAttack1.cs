@@ -11,6 +11,7 @@ public class DanglerAttack1 : MonoBehaviour {
     private Animation danglerAnimation;
 
     private GameObject ship;
+    private ShipController shipController;
 
     private enum states { idle, pouncing, hanging, flung };
     private int state = 0;
@@ -19,6 +20,7 @@ public class DanglerAttack1 : MonoBehaviour {
 	void Start () {
         danglerAnimation = gameObject.GetComponent<Animation>();
         ship = GameObject.FindGameObjectWithTag("Ship");
+        shipController = ship.transform.GetComponent<ShipController>();
     }
 	
 	// Update is called once per frame
@@ -49,15 +51,9 @@ public class DanglerAttack1 : MonoBehaviour {
                 break;
             case (int) states.hanging:
                 danglerAnimation.Play("attack");
-                ShipController shipController = ship.transform.GetComponent<ShipController>();
                 if ((Mathf.Abs(shipController.xDeltaSpeed) > maxDeltaSpeed) ||
                     (Mathf.Abs(shipController.yDeltaSpeed) > maxDeltaSpeed)) {
-                    transform.parent = null;
-                    transform.rotation = Quaternion.Euler(0, -90, 0);
-                    translationVector.y = shipController.ySpeedLast;
-                    translationVector.z = shipController.xSpeedLast;
-                    CancelInvoke();
-                    state = (int) states.flung;
+                    beginFlinging();
                 }
                 break;
             case (int) states.flung:
@@ -83,11 +79,17 @@ public class DanglerAttack1 : MonoBehaviour {
         } 
     }
 
+    public void beginFlinging () {
+        transform.parent = null;
+        transform.rotation = Quaternion.Euler(0, -90, 0);
+        translationVector.y = shipController.ySpeedLast;
+        translationVector.z = shipController.xSpeedLast;
+        CancelInvoke();
+        state = (int) states.flung;
+    }
+
     void damageShip () {
         ship.transform.parent.GetComponent<PlayerCharacter>().doDamage(3);
     }
-
-    void killDangler() {
-
-    }
 }
+
