@@ -16,6 +16,8 @@ public class MainMenuScript : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(PlayerPrefsX.GetStringArray("Names").Length);
+        Debug.Log(PlayerPrefsX.GetStringArray("Scores").Length);
         populateHighScores();
         mainView = GameObject.FindGameObjectWithTag("MainMenuView");
         beforeStartView = GameObject.FindGameObjectWithTag("BeforeStartView");
@@ -26,7 +28,6 @@ public class MainMenuScript : MonoBehaviour
         mainView.SetActive(true);
         beforeStartView.SetActive(false);
         highScoresView.SetActive(false);
-
         
     }
 
@@ -68,6 +69,11 @@ public class MainMenuScript : MonoBehaviour
         Debug.Log("Viewing high scores.");
         changeMenu(MenuStates.HighScores);
     }
+    public void OnClearPlayerPrefs()
+    {
+        Debug.Log("Clearing playerprefs data");
+        PlayerPrefs.DeleteAll();
+    }
     void changeMenu(MenuStates menu)
     {
         //Debug.Log(currentState);
@@ -97,7 +103,7 @@ public class MainMenuScript : MonoBehaviour
     {
         //float[] scores = PlayerPrefsX.GetFloatArray("Scores");
 
-        if(PlayerPrefsX.GetFloatArray("Scores").Length != 5)
+        if((PlayerPrefsX.GetFloatArray("Scores").Length != 5) && (PlayerPrefsX.GetStringArray("Names").Length != 5))
         {
             PlayerPrefsX.SetStringArray("Names", nameArray);
             PlayerPrefsX.SetFloatArray("Scores", scoreArray);
