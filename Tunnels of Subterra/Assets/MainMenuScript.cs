@@ -6,10 +6,13 @@ public class MainMenuScript : MonoBehaviour
 {
     public enum MenuStates { Main, EnterName, HighScores };
     public MenuStates currentState;
+    public string[] nameArray = new string[] { "-", "-", "-", "-", "-" };
     public float[] scoreArray = new float[] { 0, 0, 0, 0, 0 }; 
     public GameObject mainView;
     public GameObject beforeStartView;
     public GameObject highScoresView;
+    public GameObject inputName;
+    private InputField currentName;
 
     void Start()
     {
@@ -17,6 +20,8 @@ public class MainMenuScript : MonoBehaviour
         mainView = GameObject.FindGameObjectWithTag("MainMenuView");
         beforeStartView = GameObject.FindGameObjectWithTag("BeforeStartView");
         highScoresView = GameObject.FindGameObjectWithTag("HighScoresView");
+        inputName = GameObject.FindGameObjectWithTag("InputName");
+        currentName = inputName.GetComponent<InputField>();
         currentState = MenuStates.Main;
         mainView.SetActive(true);
         beforeStartView.SetActive(false);
@@ -25,6 +30,10 @@ public class MainMenuScript : MonoBehaviour
         
     }
 
+    public void Update()
+    {
+        //populateHighScores();
+    }
 
 
     public void OnStartEndless()
@@ -37,6 +46,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void OnPlay()
     {
+        PlayerPrefs.SetString("CurrentName", currentName.text);
         Debug.Log("Starting game");
         UnityEngine.SceneManagement.SceneManager.LoadScene("Test Level");
     }
@@ -61,6 +71,12 @@ public class MainMenuScript : MonoBehaviour
     {
         Debug.Log("Viewing high scores.");
         changeMenu(MenuStates.HighScores);
+    }
+    public void OnClearPrefs()
+    {
+        Debug.Log("Clearing PlayerPrefs.");
+        PlayerPrefs.DeleteAll();
+        populateHighScores();
     }
     void changeMenu(MenuStates menu)
     {
@@ -89,16 +105,26 @@ public class MainMenuScript : MonoBehaviour
     }
     void populateHighScores()
     {
+        //float[] scores = PlayerPrefsX.GetFloatArray("Scores");
+
+        if(PlayerPrefsX.GetFloatArray("Scores").Length != 5)
+        {
+            PlayerPrefsX.SetStringArray("Names", nameArray);
+            PlayerPrefsX.SetFloatArray("Scores", scoreArray);
+        }
+
         float[] scores = PlayerPrefsX.GetFloatArray("Scores");
+        string[] names = PlayerPrefsX.GetStringArray("Names");
+
         Text first = GameObject.FindGameObjectWithTag("First").GetComponent<Text>();
         Text second = GameObject.FindGameObjectWithTag("Second").GetComponent<Text>();
         Text third = GameObject.FindGameObjectWithTag("Third").GetComponent<Text>();
         Text fourth = GameObject.FindGameObjectWithTag("Fourth").GetComponent<Text>();
         Text fifth = GameObject.FindGameObjectWithTag("Fifth").GetComponent<Text>();
-        first.text = scores[0].ToString();
-        second.text = scores[1].ToString();
-        third.text = scores[2].ToString();
-        fourth.text = scores[3].ToString();
-        fifth.text = scores[4].ToString();
+        first.text = names[0] + " : " + scores[0].ToString();
+        second.text = names[1] + " : " + scores[1].ToString();
+        third.text = names[2] + " : " + scores[2].ToString();
+        fourth.text = names[3] + " : " + scores[3].ToString();
+        fifth.text = names[4] + " : " + scores[4].ToString();
     }
 }
