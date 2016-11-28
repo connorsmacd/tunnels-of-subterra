@@ -41,11 +41,13 @@ public class MainMenuScript : MonoBehaviour
         //Debug.Log(currentState);
         Debug.Log("Player wishes to endless game.");
         changeMenu(MenuStates.EnterName);
+        
         //Debug.Log(currentState);
     }
 
     public void OnPlay()
     {
+        PlayerPrefs.DeleteKey("CurrentName");
         PlayerPrefs.SetString("CurrentName", currentName.text);
         Debug.Log("Starting game");
         UnityEngine.SceneManagement.SceneManager.LoadScene("Test Level");
