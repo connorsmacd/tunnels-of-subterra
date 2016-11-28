@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3309860}
   - 23: {fileID: 2309860}
   - 65: {fileID: 65000012146022490}
+  - 114: {fileID: 114000010904418096}
   m_Layer: 0
   m_Name: Shield Metal
   m_TagString: PowerUp
@@ -90,3 +91,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.16504394, y: 0.20275807, z: 0.039937265}
   m_Center: {x: 0, y: -0.000000011175871, z: 0}
+--- !u!114 &114000010904418096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c61d396e6a3824298f3cc1fa2964df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldFor: 25
+  scoreValue: 500

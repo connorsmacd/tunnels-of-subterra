@@ -6,13 +6,30 @@ public class PlayerCharacter : MonoBehaviour {
 	public float condition;
     public float maxCondition = 100.0f;
 	public float fullCondition = 100.0f;
-	public float armourModifier = 1;
+    public float maxShield = 200f;
+    public float shield = 0f;
+    public float armourModifier = 1;
 	public int score;
 	public int experience;
     public string playerName;
 
 	public void doDamage (float damage) {
-		fullCondition -= (damage * armourModifier);
+
+        float damageAmount = (damage * armourModifier);
+
+        if (shield > 0)
+        {
+            shield -= damageAmount;
+            if(shield < 0)
+            {
+                fullCondition += shield;
+                shield = 0;
+            }
+        }
+        else
+        {
+            fullCondition -= (damage * armourModifier);
+        }
 	}
 
     public void heal(float hitpoints)
@@ -31,7 +48,19 @@ public class PlayerCharacter : MonoBehaviour {
 		score += addToScore;
 	}
 
-	void startLevel () {
+    public void addShield(float amount)
+    {
+        if (shield + amount < maxShield)
+        {
+            shield += amount;
+        }
+        else
+        {
+            shield = maxShield;
+        }
+    }
+
+    void startLevel () {
 		condition = fullCondition;
 	}
 
@@ -51,5 +80,9 @@ public class PlayerCharacter : MonoBehaviour {
     public string getName()
     {
         return playerName;
+    }
+
+    public float getShield() {
+        return shield;
     }
 }

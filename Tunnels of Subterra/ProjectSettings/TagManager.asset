@@ -28,6 +28,7 @@ TagManager:
   - Third
   - Fourth
   - Fifth
+  - Shield
   layers:
   - Default
   - TransparentFX

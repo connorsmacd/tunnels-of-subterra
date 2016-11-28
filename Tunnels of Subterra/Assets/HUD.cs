@@ -5,7 +5,7 @@ using System.Collections;
 public class HUD : MonoBehaviour {
 
     //private GameObject health, score;
-    private Text health, score, prevScore;
+    private Text health, score, prevScore, shield;
     //private int pts = 0;
     private PlayerCharacter player;
     
@@ -13,6 +13,7 @@ public class HUD : MonoBehaviour {
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCharacter>();
         health = GameObject.FindGameObjectWithTag("Health").GetComponent<Text>() as Text;
+        shield = GameObject.FindGameObjectWithTag("Shield").GetComponent<Text>() as Text;
         score = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>() as Text;
         prevScore = GameObject.FindGameObjectWithTag("PrevScore").GetComponent<Text>() as Text;
         prevScore.text = "Last Run's Score: " +PlayerPrefs.GetFloat("previousScore");
@@ -31,9 +32,10 @@ public class HUD : MonoBehaviour {
         player.modifyScore(1);
         score.text = "Score: " +player.getScore().ToString();
         health.text = "Health: " + player.getHealth().ToString();
+        shield.text = "Shield: " + player.getShield().ToString();
 
         //changes color of health value so that the player notices they are close to dying
-        if(player.getHealth() <= 20)
+        if (player.getHealth() <= 20)
         {
             health.color = Color.red;
         }
