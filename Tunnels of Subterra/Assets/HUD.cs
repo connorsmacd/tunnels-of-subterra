@@ -8,7 +8,9 @@ public class HUD : MonoBehaviour {
     private Text health, score, prevScore, shield;
     //private int pts = 0;
     private PlayerCharacter player;
-    
+    public GameObject pauseScreen;// = GameObject.FindGameObjectWithTag("PauseScreen");
+    public bool isPaused = false;
+    public bool resumePressed = false;
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCharacter>();
@@ -16,6 +18,8 @@ public class HUD : MonoBehaviour {
         shield = GameObject.FindGameObjectWithTag("Shield").GetComponent<Text>() as Text;
         score = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>() as Text;
         prevScore = GameObject.FindGameObjectWithTag("PrevScore").GetComponent<Text>() as Text;
+        pauseScreen = GameObject.FindGameObjectWithTag("PauseScreen");
+        pauseScreen.SetActive(false);
         prevScore.text = "Last Run's Score: " +PlayerPrefs.GetFloat("previousScore");
         health.text = "Health: " +player.getHealth().ToString();
         score.text = "Score: " +0.ToString();
@@ -29,7 +33,11 @@ public class HUD : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        player.modifyScore(1);
+        
+        if(!isPaused)
+        {
+            player.modifyScore(1);
+        }
         score.text = "Score: " +player.getScore().ToString();
         health.text = "Health: " + player.getHealth().ToString();
         shield.text = "Shield: " + player.getShield().ToString();
@@ -45,7 +53,40 @@ public class HUD : MonoBehaviour {
             player.heal(100f);
             playerDied(PlayerPrefs.GetString("CurrentName", "No Name"), player.getScore());
         }
-        
+
+        //allows user to pause the game and return to main menu
+        if (isPaused)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape)||resumePressed)
+            {
+                pauseScreen = GameObject.FindGameObjectWithTag("PauseScreen");
+                isPaused = false;
+                resumePressed = false;
+                pauseScreen.SetActive(false);
+                Time.timeScale = 1;
+            }
+        }
+        else if(!isPaused)
+        {
+            //player.modifyScore(1);
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                isPaused = true;
+                pauseScreen.SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
+    }
+    
+    public void onResume()
+    {
+        resumePressed = true;
+    }
+    public void onQuit()
+    {
+        Time.timeScale = 1;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
     }
     void playerDied(string name, float finalScore)
     {
