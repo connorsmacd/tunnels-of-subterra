@@ -47,8 +47,14 @@ public class MainMenuScript : MonoBehaviour
 
     public void OnPlay()
     {
-        PlayerPrefs.DeleteKey("CurrentName");
-        PlayerPrefs.SetString("CurrentName", currentName.text);
+        if(currentName.text == "")
+        {
+            PlayerPrefs.SetString("CurrentName", "No Name");
+        }
+        else
+        {
+            PlayerPrefs.SetString("CurrentName", currentName.text);
+        }
         Debug.Log("Starting game");
         UnityEngine.SceneManagement.SceneManager.LoadScene("Test Level");
     }
