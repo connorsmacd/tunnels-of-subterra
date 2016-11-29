@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class shootProjectile : MonoBehaviour {
+public class ShootProjectile : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public float projectileSpeed = 1000.0f;
 	
-	}
-	
-	// Update is called once per frame
 	void Update () {
-	
+        transform.Translate(transform.forward * projectileSpeed * Time.deltaTime);
 	}
 }

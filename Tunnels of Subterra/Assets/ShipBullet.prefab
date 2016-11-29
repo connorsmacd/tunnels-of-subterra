@@ -22,9 +22,8 @@ GameObject:
   - 136: {fileID: 136000011533891354}
   - 198: {fileID: 198000012637031190}
   - 199: {fileID: 199000011234301822}
-  - 54: {fileID: 54000011799669302}
-  - 114: {fileID: 114000012779997992}
-  m_Layer: 0
+  - 114: {fileID: 114000011395686414}
+  m_Layer: 8
   m_Name: ShipBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,22 +43,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!54 &54000011799669302
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011836049882}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &114000012779997992
+--- !u!114 &114000011395686414
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -70,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab82e96ace61c849a2309f731864db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileSpeed: 200
 --- !u!136 &136000011533891354
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -78,7 +63,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1000011836049882}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.5
   m_Height: 0.02507027
   m_Direction: 1

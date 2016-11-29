@@ -342,10 +342,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 328677733}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.65816396, y: 0, z: 0, w: 0.7528746}
   m_LocalPosition: {x: 3.04, y: -4.11, z: -0.41}
   m_LocalScale: {x: 1.874372, y: 1.8743706, z: 1.8743706}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 82.32, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 991345651}
   m_RootOrder: 0
@@ -360,8 +360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce4e8aa99996e64387a4609d4e8b88f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.5
-  projectileForce: 1000
+  fireRate: 1
+  projectileForce: 100000
   projectile: {fileID: 1000011836049882, guid: a272cc8156d51434cb9f932fcb68388b, type: 2}
 --- !u!1 &384367631
 GameObject:
@@ -3444,7 +3444,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: -1568552575
+  randomSeed: -1739618299
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -5337,6 +5337,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 998474478}
+  - 114: {fileID: 998474479}
   m_Layer: 0
   m_Name: Left Gun
   m_TagString: Untagged
@@ -5357,6 +5358,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 991345651}
   m_RootOrder: 1
+--- !u!114 &998474479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 998474477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce4e8aa99996e64387a4609d4e8b88f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 1
+  projectileForce: 100
+  projectile: {fileID: 1000011836049882, guid: a272cc8156d51434cb9f932fcb68388b, type: 2}
 --- !u!1 &1084972974
 GameObject:
   m_ObjectHideFlags: 0
@@ -11695,7 +11710,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1847052300}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.4, y: 9.0625, z: 66.8}
+  m_LocalPosition: {x: 5.4, y: 9.0625, z: 85.8}
   m_LocalScale: {x: -743.6326, y: -578.2397, z: -7037.9297}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
