@@ -54,34 +54,25 @@ public class HUD : MonoBehaviour {
             playerDied(PlayerPrefs.GetString("CurrentName", "No Name"), player.getScore());
         }
 
+   
         //allows user to pause the game and return to main menu
-        if (isPaused)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape)||resumePressed)
-            {
-                pauseScreen = GameObject.FindGameObjectWithTag("PauseScreen");
-                isPaused = false;
-                resumePressed = false;
-                pauseScreen.SetActive(false);
-                Time.timeScale = 1;
-            }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {  
+            isPaused = true;
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0;
         }
-        else if(!isPaused)
-        {
-            //player.modifyScore(1);
-
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                isPaused = true;
-                pauseScreen.SetActive(true);
-                Time.timeScale = 0;
-            }
-        }
+      
     }
+    
     
     public void onResume()
     {
-        resumePressed = true;
+        pauseScreen = GameObject.FindGameObjectWithTag("PauseScreen");
+        isPaused = false;
+        resumePressed = false;
+        pauseScreen.SetActive(false);
+        Time.timeScale = 1;
     }
     public void onQuit()
     {
