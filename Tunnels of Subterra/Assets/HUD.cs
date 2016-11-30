@@ -20,7 +20,8 @@ public class HUD : MonoBehaviour {
         prevScore = GameObject.FindGameObjectWithTag("PrevScore").GetComponent<Text>() as Text;
         pauseScreen = GameObject.FindGameObjectWithTag("PauseScreen");
         pauseScreen.SetActive(false);
-        prevScore.text = "Last Run's Score: " +PlayerPrefs.GetFloat("previousScore");
+        //prevScore.text = "Last Run's Score: " +PlayerPrefs.GetFloat("previousScore");
+        prevScore.text = "Highest Score: " + PlayerPrefsX.GetFloatArray("Scores")[0];
         health.text = "Health: " +player.getHealth().ToString();
         score.text = "Score: " +0.ToString();
         health.color = new Color(0f, 255f / 255f, 65f / 255f);
@@ -81,6 +82,7 @@ public class HUD : MonoBehaviour {
     }
     void playerDied(string name, float finalScore)
     {
+        Time.timeScale = 0.1f;
         Text gameOver = GameObject.FindGameObjectWithTag("GameOver").GetComponent<Text>();
         gameOver.text = "GAME OVER\n Final Score: " + finalScore;
         GameObject temp1 = GameObject.FindGameObjectWithTag("Health");
@@ -127,6 +129,7 @@ public class HUD : MonoBehaviour {
     IEnumerator endGame()
     {
         yield return new WaitForSecondsRealtime(5);
+        Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
     }
 }
