@@ -30,3 +30,11 @@ sysinfo.txt
 *.unitypackage
 *.dll
 Tunnels of Subterra/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll.mdb
+*.mdb
+Tunnels of Subterra/Library/ScriptAssemblies/Assembly-CSharp.dll
+*.mdb
+Tunnels of Subterra/Library/assetDatabase3
+*.dwlt
+Tunnels of Subterra/Library/expandedItems
+*.dll
+Tunnels of Subterra/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll.mdb
