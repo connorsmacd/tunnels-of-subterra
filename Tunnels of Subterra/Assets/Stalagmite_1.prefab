@@ -22,7 +22,7 @@ GameObject:
   - 33: {fileID: 33000011294459372}
   - 23: {fileID: 23000011945859638}
   - 64: {fileID: 64000013007937238}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Stalagmite_1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

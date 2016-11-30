@@ -14,9 +14,8 @@ public class DanglerStats : MonoBehaviour {
     public void killDangler () {
         hitpoints = 0.0f;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCharacter>().modifyScore(scoreValue);
-        GameObject blood = (GameObject)Instantiate(bloodEffect, transform.position, new Quaternion());
+        GameObject blood = (GameObject)Instantiate(bloodEffect, transform.parent.position, new Quaternion(), transform.parent);
         blood.GetComponent<ParticleSystem>().Play();
-        Destroy(blood, 3.0f);
         gameObject.SetActive(false);
         transform.GetComponent<DanglerAttack1>().beginFlinging();
     }

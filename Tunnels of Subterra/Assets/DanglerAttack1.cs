@@ -75,7 +75,6 @@ public class DanglerAttack1 : MonoBehaviour {
             transform.rotation = hangTransform.rotation;
             transform.position = xOriginal;
             float attackTime = danglerAnimation["attack"].length;
-            transform.GetComponent<Collider>().enabled = false;
             InvokeRepeating("damageShip", attackTime, attackTime);
         } 
     }
