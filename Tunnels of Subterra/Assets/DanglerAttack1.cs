@@ -90,6 +90,7 @@ public class DanglerAttack1 : MonoBehaviour {
     }
 
     void damageShip () {
+        transform.GetComponent<AudioSource>().Play();
         ship.transform.parent.GetComponent<PlayerCharacter>().doDamage(3);
     }
 }

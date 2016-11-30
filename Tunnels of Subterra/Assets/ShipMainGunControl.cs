@@ -34,5 +34,6 @@ public class ShipMainGunControl : MonoBehaviour {
                                                              transform.rotation, projectileParent.transform);
         shotProjectile.GetComponent<Rigidbody>().AddForce(transform.forward * 500, ForceMode.Impulse);
         Destroy(shotProjectile, 5.0f);
+        transform.GetComponent<AudioSource>().Play();
     }
 }

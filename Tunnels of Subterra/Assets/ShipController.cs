@@ -80,7 +80,7 @@ public class ShipController : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider) {
         if (collider.tag == "Obstacle") {
-            print("Player collided with obstacle");
+            transform.GetComponent<AudioSource>().Play();
             if (player.GetComponent<PlayerCharacter>().fullCondition > 0) {
                 player.GetComponent<PlayerCharacter>().doDamage(10.0f);
                 GameObject.FindGameObjectWithTag("Ship").GetComponent<ParticleSystem>().Play();
