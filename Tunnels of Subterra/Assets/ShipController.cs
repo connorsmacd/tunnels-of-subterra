@@ -32,7 +32,9 @@ public class ShipController : MonoBehaviour {
         yDeltaSpeed = 0.0f;
         xSpeedLast = 0.0f;
         ySpeedLast = 0.0f;
-	}
+        transform.FindChild("Right Jet").GetComponent<ParticleSystem>().Play();
+        transform.FindChild("Left Jet").GetComponent<ParticleSystem>().Play();
+    }
 	
 	// Update is called once per frame
 	void Update () {

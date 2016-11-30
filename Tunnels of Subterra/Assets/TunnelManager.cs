@@ -79,9 +79,9 @@ public class TunnelManager : MonoBehaviour {
 	// Checks if new segments need to be generated or old segments need to be destroyed
 	void Update () {
 		// Get Z position of the front fog
-        float frontFogZ = GameObject.FindGameObjectWithTag("Player").transform.FindChild("FrontFog").transform.position.z;
+        float frontFogZ = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Front Fog").transform.position.z;
 		// Get Z position of the rear fog
-        float rearFogZ = GameObject.FindGameObjectWithTag("Player").transform.FindChild("RearFog").transform.position.z;
+        float rearFogZ = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Rear Fog").transform.position.z;
 		// Check if new segment needs to be generated
         if ((frontFogZ - currentSegmentZ) >= ((segmentLength / 2) - distanceFromFog)) {
             addNewSegment();

@@ -24,7 +24,7 @@ public class ElementManager : MonoBehaviour {
     void Update() {
         // Get Z position of rear fog
         float rearFogZ = GameObject.FindGameObjectWithTag("Player")
-                         .transform.FindChild("RearFog").transform.position.z;
+                         .transform.FindChild("Rear Fog").transform.position.z;
         // Check if objects are in queue
         while ((objectQueue.Count > 0) && ((rearFogZ - objectQueue.Peek().transform.position.z) >= 0)) {
             // Destroy object at front of queue
@@ -39,7 +39,7 @@ public class ElementManager : MonoBehaviour {
         if (currentPowerUp.elementObject != null) {
             // Get Z position of front fog
             float frontFogZ = GameObject.FindGameObjectWithTag("Player")
-                              .transform.FindChild("FrontFog").transform.position.z;
+                              .transform.FindChild("Front Fog").transform.position.z;
             // Determine position of element
             Vector3 position = (Vector3)currentPowerUp.roughCenter +
                                new Vector3(Random.Range(-currentPowerUp.xVariance, currentPowerUp.xVariance),
