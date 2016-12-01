@@ -25,10 +25,16 @@ public class HUD : MonoBehaviour {
         health.text = "Health: " +player.getHealth().ToString();
         score.text = "Score: " +0.ToString();
         health.color = new Color(0f, 255f / 255f, 65f / 255f);
+        //fixes weird frozen ship.
+        isPaused = true;
+        pauseScreen.SetActive(true);
+        Time.timeScale = 0;
+        onResume();
 
 
 
-        
+
+
 
     }
 	
