@@ -4,27 +4,38 @@ using System.Collections;
 
 public class MainMenuScript : MonoBehaviour
 {
-    public enum MenuStates { Main, EnterName, HighScores };
+    public enum MenuStates { Main, EnterName, HighScores, LevelSelection, EnterNameLevel };
     public MenuStates currentState;
     public string[] nameArray = new string[] { "-", "-", "-", "-", "-" };
     public float[] scoreArray = new float[] { 0, 0, 0, 0, 0 }; 
     public GameObject mainView;
     public GameObject beforeStartView;
     public GameObject highScoresView;
+    public GameObject levelSelectionView;
+    public GameObject beforeLevelStartView;
     public GameObject inputName;
+    //public GameObject levelTitle;
+    public GameObject mainTitle;
     private InputField currentName;
 
     void Start()
     {
         populateHighScores();
+        mainTitle = GameObject.FindGameObjectWithTag("TITLE");
+        //levelTitle = GameObject.FindGameObjectWithTag("LevelTitle");
         mainView = GameObject.FindGameObjectWithTag("MainMenuView");
         beforeStartView = GameObject.FindGameObjectWithTag("BeforeStartView");
         highScoresView = GameObject.FindGameObjectWithTag("HighScoresView");
+        beforeLevelStartView = GameObject.FindGameObjectWithTag("BeforeLevelStartView");
+        levelSelectionView = GameObject.FindGameObjectWithTag("LevelSelectionView");
         inputName = GameObject.FindGameObjectWithTag("InputName");
         currentName = inputName.GetComponent<InputField>();
         currentState = MenuStates.Main;
         mainView.SetActive(true);
+        mainTitle.SetActive(true);
         beforeStartView.SetActive(false);
+        beforeLevelStartView.SetActive(false);
+        levelSelectionView.SetActive(false);
         highScoresView.SetActive(false);
 
         
@@ -62,7 +73,9 @@ public class MainMenuScript : MonoBehaviour
     public void OnStartLevelled()
     {
         Debug.Log("Player wishes to levelled game.");
-
+        mainTitle.SetActive(false);
+        mainView.SetActive(false);
+        levelSelectionView.SetActive(true);
     }
 
     public void OnNameEntered()
@@ -92,23 +105,35 @@ public class MainMenuScript : MonoBehaviour
         switch (menu)
         {
             case MenuStates.Main:
+                mainTitle.SetActive(true);
                 mainView.SetActive(true);
                 beforeStartView.SetActive(false);
                 highScoresView.SetActive(false);
+                levelSelectionView.SetActive(false);
                 break;
 
             case MenuStates.EnterName:
+                mainTitle.SetActive(true);
                 beforeStartView.SetActive(true);
                 mainView.SetActive(false);
                 highScoresView.SetActive(false);
+                levelSelectionView.SetActive(false);
                 break;
 
             case MenuStates.HighScores:
+                mainTitle.SetActive(true);
                 beforeStartView.SetActive(false);
                 mainView.SetActive(false);
                 highScoresView.SetActive(true);
+                levelSelectionView.SetActive(false);
                 break;
 
+            case MenuStates.LevelSelection:
+                mainTitle.SetActive(false);
+                mainView.SetActive(false);
+                highScoresView.SetActive(false);
+                levelSelectionView.SetActive(true);
+                break;
         }
     }
     void populateHighScores()

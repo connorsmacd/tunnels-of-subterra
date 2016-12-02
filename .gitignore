@@ -30,3 +30,4 @@ sysinfo.txt
 *.unitypackage
 *.dll
 Tunnels of Subterra/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll.mdb
+*.info
