@@ -31,11 +31,16 @@ public class TunnelManager : MonoBehaviour {
     private float currentSegmentZ;
 	// Length of the segments
     private float segmentLength;
+    // keeps track of how long the level is
+    private float totalLength = 0;
+    //Sets the max of the level, -1 for infinite
+    private float maxLength = -1;
 
 	// Adds a new segment in front of the most recent segment
     void addNewSegment () {
 		// Get new z position
         currentSegmentZ += segmentLength;
+        totalLength += segmentLength;
 		// Make position vector for the segment
         Vector3 position = new Vector3(0, 0, currentSegmentZ);
         GameObject newSegment;

@@ -1033,13 +1033,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSpeed: 100
+  winScene: Level3
+  loseScene: Level2
   obstacleProbability: 0.1
   maxObstacles: 12
-  enemyProbability: 0.025
+  enemyProbability: 0.03
   maxEnemies: 2
   powerupProbabiltiy: 0.015
   maxPowerUp: 2
-  levelMaterial: {fileID: 2100000, guid: e76d2a1e1998b7c47baddbf50bd2c171, type: 2}
+  levelMaterial: {fileID: 2100000, guid: 5a1a4aa5c2774544dab38b4098f108e4, type: 2}
   obstacleList:
   - elementObject: {fileID: 1000012837605152, guid: 171a7a9d9073b154a84b122a9dd1be56,
       type: 2}

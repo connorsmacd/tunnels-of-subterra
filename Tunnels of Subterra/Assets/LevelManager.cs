@@ -13,7 +13,10 @@ public class LevelManager : MonoBehaviour {
 
 	// Speed that the ship will travel at
     public float levelSpeed = 100.0f;
-	// Probability of an obstacle being generated per 100 milliseconds
+    public string winScene = "Level";
+
+    public string loseScene = "Level";
+    // Probability of an obstacle being generated per 100 milliseconds
     public float obstacleProbability = 0.1f;
 	// Maximum number of obstacles to be present at a time
     public int maxObstacles = 12;
@@ -75,5 +78,26 @@ public class LevelManager : MonoBehaviour {
             enemyManager.generateElement();
         }
     }
+
+    public void loadScene(string scene)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
+    }
+
+    public void win()
+    {
+        loadScene(winScene);
+    }
+
+    public void lose()
+    {
+        loadScene(loseScene);
+    }
+
+    public void reload()
+    {
+        loadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
 }
+
 
