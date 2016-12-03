@@ -84,12 +84,12 @@ public class LevelManager : MonoBehaviour {
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
     }
 
-    public void win()
+    public void win_Scene()
     {
         loadScene(winScene);
     }
 
-    public void lose()
+    public void lose_Scene()
     {
         loadScene(loseScene);
     }
