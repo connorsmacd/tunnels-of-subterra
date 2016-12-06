@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+    Script: SetObstacleMaterial
+    Author: Connor MacDonald
+
+    Sets the material of all obstacles to the level material
+*/
+
+using UnityEngine;
 using System.Collections;
 
-/*
- * Script: SetObstacleMaterial
- * Author: Connor MacDonald
- * 
- * Sets the material of all obstacles to the level material
- */
 public class SetObstacleMaterial : MonoBehaviour {
 
 	void Update () {

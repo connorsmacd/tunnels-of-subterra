@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+    File: Element.cs
+    Author: Connor S. MacDonald (B00632423)
+
+    This file defines the element struct, which is used to store
+    the game object of the element along with parameters governing
+    how the element is instantiated.
+*/
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 

@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+    Script: SetMaterial.cs
+    Author: Connor S. MacDonald (B00632423)
+
+    Sets the material of all mesh renderers of the tunnel to the level material
+ */
+
+using UnityEngine;
 using System.Collections;
 
-/*
- * Script: SetMaterial.cs
- * Author: Connor S. MacDonald (B00632423)
- * 
- * Sets the material of all mesh renderers to the level material
- */
 public class SetMaterial : MonoBehaviour {
 
 	void Start () {

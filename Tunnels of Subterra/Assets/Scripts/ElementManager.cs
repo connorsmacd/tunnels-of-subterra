@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+    File: ElementManager.cs
+    Author: Connor S. MacDonald (B00632423)
+
+    This file containes the ElementManager class, which is used
+    to place elements in the tunnel and remove extraneous elements.
+*/
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -13,9 +21,10 @@ public class ElementManager : MonoBehaviour {
     // Parent of instantiated elements
     public GameObject parent { get; set; }
 
-    // Queue of elements
+    // Queue of elements that are active
     private Queue<GameObject> objectQueue;
 
+    // Initializes the queue
     void Start () {
         objectQueue = new Queue<GameObject>();
     }
@@ -50,8 +59,7 @@ public class ElementManager : MonoBehaviour {
             // Set parent
             currentObstacleObject.transform.parent = parent.transform;
             // Enqueue object
-            if ((objectQueue != null) && (currentObstacleObject != null))
-                objectQueue.Enqueue(currentObstacleObject);
+            objectQueue.Enqueue(currentObstacleObject);
         }
     }
 }

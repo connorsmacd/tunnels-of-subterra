@@ -1,17 +1,18 @@
-﻿using UnityEngine;
+﻿/*
+    Script: TunnelManager.cs
+    Author: Connor S. MacDonald (B00632423)
+
+    This script controls the placement of the tunnel.
+    The tunnel is broken up into segments that are repeated
+    in front of each other as the player moves. As well, old
+    segments are destroyed as the player moves a sufficient distance
+    away.
+ */
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-/*
- * Script: TunnelManager.cs
- * Author: Connor S. MacDonald (B00632423)
- * 
- * This script controls the placement of the tunnel.
- * The tunnel is broken up into segments that are repeated
- * in front of each other as the player moves. As well, old
- * segments are destroyed as the player moves a sufficient distance
- * away.
- */
 public class TunnelManager : MonoBehaviour {
 
 	// The standard tunnel segment
