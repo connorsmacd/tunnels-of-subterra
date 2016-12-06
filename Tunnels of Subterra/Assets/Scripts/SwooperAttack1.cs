@@ -23,6 +23,10 @@ public class SwooperAttack1 : MonoBehaviour {
     private Animation swooperAnimation;
     // Game object of ship
     private GameObject ship;
+    // Transform of projectile emitter
+    private Transform emitter;
+    // Game object of projectile
+    public GameObject projectile;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +36,10 @@ public class SwooperAttack1 : MonoBehaviour {
         hoverSpeed = -GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>().levelSpeed;
         // Set ship
         ship = GameObject.FindGameObjectWithTag("Ship");
+        // Get emitter
+        emitter = transform.GetChild(0);
+        // And some randomness to the attack distance
+        attackDistance += Random.Range(-10, 0);
     }
 	
 	// Update is called once per frame
@@ -49,16 +57,32 @@ public class SwooperAttack1 : MonoBehaviour {
                 } else {
                     // Start attacking
                     state = (int)states.attacking;
+                    // Get length of attack animation
+                    float attackTime = swooperAnimation["Attack"].length;
+                    // Start shooting
+                    InvokeRepeating("Shoot", attackTime, attackTime);
                 }
                 break;
             case (int) states.attacking:
                 // Fly backwards
                 transform.Translate(0, 0, hoverSpeed * Time.deltaTime);
                 // Play attack animation
-                swooperAnimation["Attack"].speed = 2.0f;
+                //swooperAnimation["Attack"].speed = 2.0f;
                 swooperAnimation.Play("Attack");
                 break;
         }
 	}
+
+    // Shoots at the ship
+    private void Shoot () {
+        // Point emitter at ship
+        emitter.LookAt(ship.transform);
+        // Instantiate projectile
+        GameObject shotProjectile = (GameObject)Instantiate(projectile, emitter.position, emitter.rotation, emitter);
+        // Add force to projectile in direction gun is pointing
+        shotProjectile.GetComponent<Rigidbody>().AddForce(emitter.forward * 75, ForceMode.Impulse);
+        // Destroy projectile after 5 seconds
+        Destroy(shotProjectile, 5.0f);
+    }
 }
 
