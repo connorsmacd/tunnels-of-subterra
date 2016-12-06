@@ -52,60 +52,63 @@ public class ShipController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // Get ship position
-        Vector3 shipPosition = transform.position;
-        // Get ray from cursor at camera
-        Ray aimRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        // Find where cursor is pointing ship to go
-        Vector2 destination = (Vector2) aimRay.GetPoint(Vector3.Distance(shipPosition, aimRay.origin)) + new Vector2(0, cursorOffset);
-        // Initialize a vector that translates the ship
-        Vector3 translateVector = new Vector3();
+        // Check if locked
+        if (!Input.GetKey(KeyCode.Q)) {
+            // Get ship position
+            Vector3 shipPosition = transform.position;
+            // Get ray from cursor at camera
+            Ray aimRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            // Find where cursor is pointing ship to go
+            Vector2 destination = (Vector2)aimRay.GetPoint(Vector3.Distance(shipPosition, aimRay.origin)) + new Vector2(0, cursorOffset);
+            // Initialize a vector that translates the ship
+            Vector3 translateVector = new Vector3();
 
-        // Find how far ship can move on each axis (uses the equation of an elipse)
-        float xExtents = Mathf.Sqrt((boundsExtents.x * boundsExtents.x) * (1 - ((shipPosition.y * shipPosition.y) / (boundsExtents.y * boundsExtents.y))));
-        float yExtents = Mathf.Sqrt((boundsExtents.y * boundsExtents.y) * (1 - ((shipPosition.x * shipPosition.x) / (boundsExtents.x * boundsExtents.x))));
+            // Find how far ship can move on each axis (uses the equation of an elipse)
+            float xExtents = Mathf.Sqrt((boundsExtents.x * boundsExtents.x) * (1 - ((shipPosition.y * shipPosition.y) / (boundsExtents.y * boundsExtents.y))));
+            float yExtents = Mathf.Sqrt((boundsExtents.y * boundsExtents.y) * (1 - ((shipPosition.x * shipPosition.x) / (boundsExtents.x * boundsExtents.x))));
 
-        // Determine x and y speeds
-        float xSpeed = nimbilityFactor * (destination.x - shipPosition.x);
-        float ySpeed = nimbilityFactor * (destination.y - shipPosition.y);
+            // Determine x and y speeds
+            float xSpeed = nimbilityFactor * (destination.x - shipPosition.x);
+            float ySpeed = nimbilityFactor * (destination.y - shipPosition.y);
 
-        // Check if x speed exceeds max speed
-        if (xSpeed < 0)
-            xSpeed = Mathf.Max(xSpeed, -maxSpeed);
-        else if (xSpeed > 0)
-            xSpeed = Mathf.Min(xSpeed, maxSpeed);
+            // Check if x speed exceeds max speed
+            if (xSpeed < 0)
+                xSpeed = Mathf.Max(xSpeed, -maxSpeed);
+            else if (xSpeed > 0)
+                xSpeed = Mathf.Min(xSpeed, maxSpeed);
 
-        // Check if y speed exceeds max speed
-        if (ySpeed < 0)
-            ySpeed = Mathf.Max(ySpeed, -maxSpeed);
-        else if (ySpeed > 0)
-            ySpeed = Mathf.Min(ySpeed, maxSpeed);
+            // Check if y speed exceeds max speed
+            if (ySpeed < 0)
+                ySpeed = Mathf.Max(ySpeed, -maxSpeed);
+            else if (ySpeed > 0)
+                ySpeed = Mathf.Min(ySpeed, maxSpeed);
 
-        // Calculate delta speeds
-        xDeltaSpeed = xSpeedLast - xSpeed;
-        yDeltaSpeed = ySpeedLast - ySpeed;
+            // Calculate delta speeds
+            xDeltaSpeed = xSpeedLast - xSpeed;
+            yDeltaSpeed = ySpeedLast - ySpeed;
 
-        // Set last speeds
-        xSpeedLast = xSpeed;
-        ySpeedLast = ySpeed; 
+            // Set last speeds
+            xSpeedLast = xSpeed;
+            ySpeedLast = ySpeed;
 
-        // Check if ship is at bounds
-        if ((shipPosition.x > destination.x) && (shipPosition.x > -xExtents))
-            // Set the x of the translate vector
-            translateVector.x = xSpeed * Time.deltaTime;
-        else if ((shipPosition.x < destination.x) && (shipPosition.x < xExtents))
-            // Set the x of the translate vector
-            translateVector.x = xSpeed * Time.deltaTime;
+            // Check if ship is at bounds
+            if ((shipPosition.x > destination.x) && (shipPosition.x > -xExtents))
+                // Set the x of the translate vector
+                translateVector.x = xSpeed * Time.deltaTime;
+            else if ((shipPosition.x < destination.x) && (shipPosition.x < xExtents))
+                // Set the x of the translate vector
+                translateVector.x = xSpeed * Time.deltaTime;
 
-        if ((shipPosition.y > destination.y) && (shipPosition.y > -yExtents))
-            // Set the z of the translate vector (ship is rotated on x axis, so z is up)
-            translateVector.z = ySpeed * Time.deltaTime;
-        else if ((shipPosition.y < destination.y) && (shipPosition.y < yExtents))
-            // Set the z of the translate vector
-            translateVector.z = ySpeed * Time.deltaTime;
+            if ((shipPosition.y > destination.y) && (shipPosition.y > -yExtents))
+                // Set the z of the translate vector (ship is rotated on x axis, so z is up)
+                translateVector.z = ySpeed * Time.deltaTime;
+            else if ((shipPosition.y < destination.y) && (shipPosition.y < yExtents))
+                // Set the z of the translate vector
+                translateVector.z = ySpeed * Time.deltaTime;
 
-        // Translate ship
-        transform.Translate(translateVector);
+            // Translate ship
+            transform.Translate(translateVector);
+        }
     }
 
     // When collision happens
