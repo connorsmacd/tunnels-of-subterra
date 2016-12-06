@@ -19,7 +19,7 @@ public class SwooperProjectileCollision : MonoBehaviour {
         // Get collider
         Collider shipCollider = collision.collider;
         // Damage player
-        shipCollider.transform.parent.GetComponent<PlayerCharacter>().doDamage(1);
+        shipCollider.transform.parent.GetComponent<PlayerCharacter>().doDamage(5);
         // Play hit sound
         shipCollider.GetComponent<AudioSource>().Play();
         // Destroy projectile
