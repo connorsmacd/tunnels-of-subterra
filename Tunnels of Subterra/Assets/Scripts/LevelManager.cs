@@ -162,6 +162,11 @@ public class LevelManager : MonoBehaviour {
     {
         enemiesKilled++;
     }
+
+    public float getMaxTime()
+    {
+        return maxTime;
+    }
 }
 
 
