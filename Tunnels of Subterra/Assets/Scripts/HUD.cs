@@ -86,7 +86,22 @@ public class HUD : MonoBehaviour {
         Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
     }
-    void playerDied(string name, float finalScore)
+
+    public void playerWin()
+    {
+        Debug.Log("PlayerWin started");
+        Time.timeScale = 0.1f;
+        Text gameOver = GameObject.FindGameObjectWithTag("GameOver").GetComponent<Text>();
+        gameOver.text = "LEVEL COMPLETE\n Final Score: " + player.getScore();
+        GameObject temp1 = GameObject.FindGameObjectWithTag("Health");
+        temp1.SetActive(false);
+        GameObject temp2 = GameObject.FindGameObjectWithTag("Score");
+        temp2.SetActive(false);
+        Time.timeScale = 1;
+        Debug.Log("PlayerWin ended");
+    }
+
+    public void playerDied(string name, float finalScore)
     {
         Time.timeScale = 0.1f;
         Text gameOver = GameObject.FindGameObjectWithTag("GameOver").GetComponent<Text>();

@@ -49,6 +49,7 @@ public class LevelManager : MonoBehaviour {
     //Sets the max of the enemies killed, -1 for infinite
     public float maxEnemyKills = -1;
     private float timePassed = 0;
+    private bool won = false;
 
     // Element managers
     private ElementManager obstacleManager;
@@ -75,12 +76,12 @@ public class LevelManager : MonoBehaviour {
         InvokeRepeating("chooseElements", 2.0f, 0.1f);
     }
 
-    void Update()
-    {
+    void Update () {
         timePassed += Time.deltaTime;
-        if (checkWin())
+        if (checkWin() && won == false)
         {
-            //game logic to load next level
+            startWin();
+            won = true;
         }
     }
 
@@ -111,18 +112,21 @@ public class LevelManager : MonoBehaviour {
 
     private bool checkWin()
     {
+        Debug.Log("Total length is: " + tunnelManager.getTotalLength());
         if (tunnelManager.getTotalLength() > maxLength && maxLength >= 0)
         {
             return true;
         }
-        if (tunnelManager.getTotalLength() > timePassed && timePassed >= 0)
+        if (timePassed > maxTime && maxTime >= 0)
         {
             return true;
         }
-        if (tunnelManager.getTotalLength() > maxEnemyKills && maxEnemyKills >= 0)
+        /*if (tunnelManager.getTotalLength() > maxEnemyKills && maxEnemyKills >= 0)
         {
             return true;
         }
+        dont have a way to keep track of this yet.
+         */
         return false;
     }
 
@@ -131,8 +135,18 @@ public class LevelManager : MonoBehaviour {
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
     }
 
-    public void win_Scene()
+    void startWin()
     {
+        //game logic to load next level
+        Debug.Log("PlayerWin started");
+        hud.playerWin();
+        StartCoroutine(loadWin());
+
+    }
+
+    IEnumerator loadWin()
+    {
+        yield return new WaitForSecondsRealtime(5);
         loadScene(winScene);
     }
 
