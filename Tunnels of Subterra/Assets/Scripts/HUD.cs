@@ -85,7 +85,6 @@ public class HUD : MonoBehaviour {
 
     public void playerWin()
     {
-        Debug.Log("PlayerWin started");
         Time.timeScale = 0.1f;
         Text gameOver = GameObject.FindGameObjectWithTag("GameOver").GetComponent<Text>();
         gameOver.text = "LEVEL COMPLETE\n Final Score: " + player.getScore();
@@ -94,8 +93,6 @@ public class HUD : MonoBehaviour {
         GameObject temp2 = GameObject.FindGameObjectWithTag("Score");
         temp2.SetActive(false);
         Time.timeScale = 1;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
-        Debug.Log("PlayerWin ended");
     }
 
     public void playerDied(string name, float finalScore)
