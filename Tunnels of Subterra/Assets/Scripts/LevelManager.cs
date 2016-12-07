@@ -50,6 +50,7 @@ public class LevelManager : MonoBehaviour {
     public float maxEnemyKills = -1;
     private float timePassed = 0;
     private bool won = false;
+    private int enemiesKilled = 0;
 
     // Element managers
     private ElementManager obstacleManager;
@@ -157,6 +158,11 @@ public class LevelManager : MonoBehaviour {
     public void reload()
     {
         loadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+
+    public void enemyDeath()
+    {
+        enemiesKilled++;
     }
 }
 
