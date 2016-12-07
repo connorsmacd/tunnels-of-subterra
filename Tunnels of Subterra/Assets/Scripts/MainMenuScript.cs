@@ -4,7 +4,7 @@ using System.Collections;
 
 public class MainMenuScript : MonoBehaviour
 {
-    public enum MenuStates { Main, EnterName, HighScores, LevelSelection, EnterNameLevel, EnterNameEradication, EradicationSelection };
+    public enum MenuStates { Main, EnterName, HighScores, LevelSelection, EnterNameLevel };
     public MenuStates currentState;
     public string[] nameArray = new string[] { "-", "-", "-", "-", "-" };
     public float[] scoreArray = new float[] { 0, 0, 0, 0, 0 }; 
@@ -13,8 +13,6 @@ public class MainMenuScript : MonoBehaviour
     public GameObject highScoresView;
     public GameObject levelSelectionView;
     public GameObject beforeLevelStartView;
-    public GameObject beforeEradicationView;
-    public GameObject eradicationSelectionView;
     public GameObject inputName;
     //public GameObject levelTitle;
     public GameObject mainTitle;
@@ -22,7 +20,6 @@ public class MainMenuScript : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 1;
         populateHighScores();
         mainTitle = GameObject.FindGameObjectWithTag("TITLE");
         //levelTitle = GameObject.FindGameObjectWithTag("LevelTitle");
@@ -32,8 +29,6 @@ public class MainMenuScript : MonoBehaviour
         beforeLevelStartView = GameObject.FindGameObjectWithTag("BeforeLevelStartView");
         levelSelectionView = GameObject.FindGameObjectWithTag("LevelSelectionView");
         inputName = GameObject.FindGameObjectWithTag("InputName");
-        beforeEradicationView = GameObject.FindGameObjectWithTag("BeforeEradicationView");
-        eradicationSelectionView = GameObject.FindGameObjectWithTag("EradicationSelectionView");
         currentName = inputName.GetComponent<InputField>();
         currentState = MenuStates.Main;
         mainView.SetActive(true);
@@ -42,8 +37,8 @@ public class MainMenuScript : MonoBehaviour
         beforeLevelStartView.SetActive(false);
         levelSelectionView.SetActive(false);
         highScoresView.SetActive(false);
-        beforeEradicationView.SetActive(false);
-        eradicationSelectionView.SetActive(false);
+
+        
     }
 
     public void Update()
@@ -82,14 +77,7 @@ public class MainMenuScript : MonoBehaviour
         mainView.SetActive(false);
         levelSelectionView.SetActive(true);
     }
-    public void OnEradication()
-    {
-        Debug.Log("Player wishes to start eradication game mode.");
-        mainTitle.SetActive(false);
-        mainView.SetActive(false);
-        eradicationSelectionView.SetActive(true);
-    }
-    
+
     public void OnNameEntered()
     {
         Debug.Log("Player entered name and is starting game.");
@@ -136,21 +124,6 @@ public class MainMenuScript : MonoBehaviour
         Debug.Log("Loading Level 5");
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level4");
     }
-    public void OnEradication1()
-    {
-        Debug.Log("Loading Eradication level 1");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("eradication1");
-    }
-    public void OnEradication2()
-    {
-        Debug.Log("Loading Eradication level 2");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("eradication2");
-    }
-    public void OnEradication3()
-    {
-        Debug.Log("Loading Eradication level 3");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("eradication3");
-    }
     void changeMenu(MenuStates menu)
     {
         //Debug.Log(currentState);
@@ -162,8 +135,6 @@ public class MainMenuScript : MonoBehaviour
                 beforeStartView.SetActive(false);
                 highScoresView.SetActive(false);
                 levelSelectionView.SetActive(false);
-                eradicationSelectionView.SetActive(false);
-                beforeEradicationView.SetActive(false);
                 break;
 
             case MenuStates.EnterName:
@@ -172,8 +143,6 @@ public class MainMenuScript : MonoBehaviour
                 mainView.SetActive(false);
                 highScoresView.SetActive(false);
                 levelSelectionView.SetActive(false);
-                eradicationSelectionView.SetActive(false);
-                beforeEradicationView.SetActive(false);
                 break;
 
             case MenuStates.HighScores:
@@ -182,40 +151,14 @@ public class MainMenuScript : MonoBehaviour
                 mainView.SetActive(false);
                 highScoresView.SetActive(true);
                 levelSelectionView.SetActive(false);
-                eradicationSelectionView.SetActive(false);
-                beforeEradicationView.SetActive(false);
                 break;
 
             case MenuStates.LevelSelection:
                 mainTitle.SetActive(false);
-                beforeStartView.SetActive(false);
                 mainView.SetActive(false);
                 highScoresView.SetActive(false);
                 levelSelectionView.SetActive(true);
-                eradicationSelectionView.SetActive(false);
-                beforeEradicationView.SetActive(false);
                 break;
-
-            case MenuStates.EnterNameEradication:
-                mainTitle.SetActive(false);
-                beforeStartView.SetActive(false);
-                mainView.SetActive(false);
-                highScoresView.SetActive(false);
-                levelSelectionView.SetActive(false);
-                eradicationSelectionView.SetActive(false);
-                beforeEradicationView.SetActive(true);
-                break;
-
-            case MenuStates.EradicationSelection:
-                mainTitle.SetActive(false);
-                beforeStartView.SetActive(false);
-                mainView.SetActive(false);
-                highScoresView.SetActive(false);
-                levelSelectionView.SetActive(false);
-                eradicationSelectionView.SetActive(true);
-                beforeEradicationView.SetActive(false);
-                break;
-
         }
     }
     void populateHighScores()
