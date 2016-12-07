@@ -363,6 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 25
   searchSpeed: 50
+  projectile: {fileID: 0}
 --- !u!135 &321020495
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1033,11 +1034,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSpeed: 100
+  winScene: Level
+  loseScene: Level
   obstacleProbability: 0.1
   maxObstacles: 12
   enemyProbability: 0.05
   maxEnemies: 2
-  powerupProbabiltiy: 0.01
+  powerupProbability: 0.01
   maxPowerUp: 2
   levelMaterial: {fileID: 2100000, guid: e76d2a1e1998b7c47baddbf50bd2c171, type: 2}
   obstacleList:
@@ -1069,6 +1072,9 @@ MonoBehaviour:
     orientation: {x: 0, y: -90, z: 0}
     xVariance: 1.2
   enemyParent: {fileID: 1551441740}
+  maxLength: -1
+  maxTime: 300
+  maxEnemyKills: -1
 --- !u!114 &711547608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3860,6 +3866,7 @@ MonoBehaviour:
   shield: 0
   armourModifier: 1
   score: 0
+  currency: 0
   experience: 0
   playerName: 
 --- !u!114 &1201984010

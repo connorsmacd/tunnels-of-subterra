@@ -1018,7 +1018,7 @@ MonoBehaviour:
     xVariance: 2.5
   enemyParent: {fileID: 1551441740}
   maxLength: -1
-  maxTime: -1
+  maxTime: 300
   maxEnemyKills: -1
 --- !u!114 &711547608
 MonoBehaviour:
