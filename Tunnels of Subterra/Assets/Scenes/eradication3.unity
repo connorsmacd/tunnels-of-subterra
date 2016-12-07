@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelSpeed: 100
   winScene: Main Menu
-  loseScene: Level5
+  loseScene: eradication3
   obstacleProbability: 0.4
   maxObstacles: 12
   enemyProbability: 0.13
