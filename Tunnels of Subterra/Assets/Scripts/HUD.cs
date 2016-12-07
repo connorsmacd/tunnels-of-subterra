@@ -8,11 +8,13 @@ public class HUD : MonoBehaviour {
     private Text health, score, prevScore, shield;
     //private int pts = 0;
     private PlayerCharacter player;
+    private LevelManager lvlman;
     public GameObject pauseScreen;// = GameObject.FindGameObjectWithTag("PauseScreen");
     public bool isPaused = false;
     public bool resumePressed = false;
 	// Use this for initialization
 	void Start () {
+        lvlman = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCharacter>();
         health = GameObject.FindGameObjectWithTag("Health").GetComponent<Text>() as Text;
         shield = GameObject.FindGameObjectWithTag("Shield").GetComponent<Text>() as Text;
@@ -30,12 +32,6 @@ public class HUD : MonoBehaviour {
         pauseScreen.SetActive(true);
         Time.timeScale = 0;
         onResume();
-
-
-
-
-
-
     }
 	
 	// Update is called once per frame
@@ -152,6 +148,6 @@ public class HUD : MonoBehaviour {
     {
         yield return new WaitForSecondsRealtime(5);
         Time.timeScale = 1;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
+        lvlman.lose_Scene();
     }
 }
