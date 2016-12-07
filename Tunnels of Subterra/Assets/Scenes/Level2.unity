@@ -1017,7 +1017,7 @@ MonoBehaviour:
     orientation: {x: 0, y: 180, z: 0}
     xVariance: 2.5
   enemyParent: {fileID: 1551441740}
-  maxLength: 1
+  maxLength: -1
   maxTime: -1
   maxEnemyKills: -1
 --- !u!114 &711547608
