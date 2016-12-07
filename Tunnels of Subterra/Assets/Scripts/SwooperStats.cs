@@ -15,11 +15,14 @@ public class SwooperStats : MonoBehaviour {
     public int scoreValue = 50;
     // Blood effect that is played when killed
     public GameObject bloodEffect;
+    private LevelManager lvlman;
 
     // Damages the swooper
     public void damageSwooper (float damage) {
         hitpoints -= damage;
     }
+
+    
 
     // Kills the swooper
     public void killSwooper () {
@@ -35,6 +38,12 @@ public class SwooperStats : MonoBehaviour {
         Destroy(blood, 3.0f);
         // Disable swooper
         gameObject.SetActive(false);
+        lvlman.enemyDeath();
+    }
+
+    void start()
+    {
+        lvlman = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
     }
 
     // Fixed update for rigid body
