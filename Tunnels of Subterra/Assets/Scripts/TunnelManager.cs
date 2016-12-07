@@ -34,8 +34,6 @@ public class TunnelManager : MonoBehaviour {
     private float segmentLength;
     // keeps track of how long the level is
     private float totalLength = 0;
-    //Sets the max of the level, -1 for infinite
-    private float maxLength = -1;
 
 	// Adds a new segment in front of the most recent segment
     void addNewSegment () {
@@ -97,4 +95,9 @@ public class TunnelManager : MonoBehaviour {
             removeOldSegment();
         }
 	}
+
+    public float getTotalLength()
+    {
+        return totalLength;
+    }
 }

@@ -42,11 +42,20 @@ public class LevelManager : MonoBehaviour {
     public List<Element> enemyList;
     // Parent to enemies
     public GameObject enemyParent;
+    //Sets the max of the level, -1 for infinite
+    public float maxLength = -1;
+    //Sets the max of the time, -1 for infinite
+    public float maxTime = -1;
+    //Sets the max of the enemies killed, -1 for infinite
+    public float maxEnemyKills = -1;
+    private float timePassed = 0;
 
     // Element managers
     private ElementManager obstacleManager;
     private ElementManager powerUpManager;
     private ElementManager enemyManager;
+    private HUD hud;
+    private TunnelManager tunnelManager;
 
     // Initilizes the obstacle manager and calls the repeated function
     void Start () {
@@ -60,8 +69,19 @@ public class LevelManager : MonoBehaviour {
         enemyManager = gameObject.AddComponent<ElementManager>();
         enemyManager.elements = enemyList;
         enemyManager.parent = enemyParent;
+        hud = GameObject.FindGameObjectWithTag("Canvas").GetComponent<HUD>();
+        tunnelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<TunnelManager>();
         // Wait two seconds, then call every 100 milliseconds
         InvokeRepeating("chooseElements", 2.0f, 0.1f);
+    }
+
+    void Update()
+    {
+        timePassed += Time.deltaTime;
+        if (checkWin())
+        {
+            //game logic to load next level
+        }
     }
 
 	// Returns a random float between 0.0 and 1.0
@@ -87,6 +107,23 @@ public class LevelManager : MonoBehaviour {
         if ((getRand() <= enemyProbability) && (enemyCount < maxEnemies)) {
             enemyManager.generateElement();
         }
+    }
+
+    private bool checkWin()
+    {
+        if (tunnelManager.getTotalLength() > maxLength && maxLength >= 0)
+        {
+            return true;
+        }
+        if (tunnelManager.getTotalLength() > timePassed && timePassed >= 0)
+        {
+            return true;
+        }
+        if (tunnelManager.getTotalLength() > maxEnemyKills && maxEnemyKills >= 0)
+        {
+            return true;
+        }
+        return false;
     }
 
     public void loadScene(string scene)
