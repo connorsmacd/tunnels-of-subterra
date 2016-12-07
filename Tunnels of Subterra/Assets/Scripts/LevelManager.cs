@@ -121,12 +121,10 @@ public class LevelManager : MonoBehaviour {
         {
             return true;
         }
-        /*if (tunnelManager.getTotalLength() > maxEnemyKills && maxEnemyKills >= 0)
+        if (enemiesKilled >= maxEnemyKills && maxEnemyKills >= 0)
         {
             return true;
         }
-        dont have a way to keep track of this yet.
-         */
         return false;
     }
 
