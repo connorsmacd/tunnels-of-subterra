@@ -172,6 +172,11 @@ public class LevelManager : MonoBehaviour {
     {
         return maxEnemyKills;
     }
+
+    public float getEnemiesKilled()
+    {
+        return enemiesKilled;
+    }
 }
 
 
