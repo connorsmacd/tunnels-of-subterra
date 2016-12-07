@@ -15,7 +15,7 @@ public class DanglerStats : MonoBehaviour {
     public int scoreValue = 50;
     // Game object for blood effect
     public GameObject bloodEffect;
-    private LevelManager lvlman;
+    private LevelManager lvlman = null;
 
     // Damage dangker
     public void damageDangler (float damage) {
@@ -48,6 +48,10 @@ public class DanglerStats : MonoBehaviour {
 
     void Update () {
         // Check if hitpoints are 0 or less
+        if(lvlman == null)
+        {
+            lvlman = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+        }
         if (hitpoints <= 0.0f) {
             // Kill dangler
             killDangler();

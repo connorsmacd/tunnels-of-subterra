@@ -21,3 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level4.unity
   - enabled: 1
     path: Assets/Scenes/Level5.unity
+  - enabled: 1
+    path: Assets/Scenes/eradication3.unity
+  - enabled: 1
+    path: Assets/Scenes/eradication2.unity
+  - enabled: 1
+    path: Assets/Scenes/eradication1.unity

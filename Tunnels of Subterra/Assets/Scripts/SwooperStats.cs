@@ -15,7 +15,7 @@ public class SwooperStats : MonoBehaviour {
     public int scoreValue = 50;
     // Blood effect that is played when killed
     public GameObject bloodEffect;
-    private LevelManager lvlman;
+    private LevelManager lvlman = null;
 
     // Damages the swooper
     public void damageSwooper (float damage) {
@@ -49,6 +49,10 @@ public class SwooperStats : MonoBehaviour {
     // Fixed update for rigid body
     void FixedUpdate() {
         // Check if hitpoints are less than zero
+        if (lvlman == null)
+        {
+            lvlman = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
+        }
         if (hitpoints <= 0.0f) {
             // Kill the swooper
             killSwooper();

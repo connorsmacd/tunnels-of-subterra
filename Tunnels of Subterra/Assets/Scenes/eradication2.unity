@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.8575135, g: 0.87503517, b: 0.8296416, a: 1}
+  m_IndirectSpecularColor: {r: 0.8575093, g: 0.8750318, b: 0.8296419, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -974,12 +974,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSpeed: 100
-  winScene: Level5
-  loseScene: Level4
-  obstacleProbability: 0.3
-  maxObstacles: 17
-  enemyProbability: 0.1
-  maxEnemies: 4
+  winScene: eradication3
+  loseScene: eradication2
+  obstacleProbability: 0.18
+  maxObstacles: 12
+  enemyProbability: 0.079
+  maxEnemies: 3
   powerupProbability: 0.01
   maxPowerUp: 2
   levelMaterial: {fileID: 2100000, guid: e76d2a1e1998b7c47baddbf50bd2c171, type: 2}
@@ -1023,8 +1023,8 @@ MonoBehaviour:
     xVariance: 2.5
   enemyParent: {fileID: 1551441740}
   maxLength: -1
-  maxTime: 200
-  maxEnemyKills: -1
+  maxTime: -1
+  maxEnemyKills: 75
 --- !u!114 &711547608
 MonoBehaviour:
   m_ObjectHideFlags: 0
