@@ -112,7 +112,6 @@ public class LevelManager : MonoBehaviour {
 
     private bool checkWin()
     {
-        Debug.Log("Total length is: " + tunnelManager.getTotalLength());
         if (tunnelManager.getTotalLength() > maxLength && maxLength >= 0)
         {
             return true;

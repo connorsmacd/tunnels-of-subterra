@@ -98,6 +98,7 @@ public class HUD : MonoBehaviour {
         GameObject temp2 = GameObject.FindGameObjectWithTag("Score");
         temp2.SetActive(false);
         Time.timeScale = 1;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
         Debug.Log("PlayerWin ended");
     }
 
