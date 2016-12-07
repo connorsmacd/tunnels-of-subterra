@@ -1036,10 +1036,10 @@ MonoBehaviour:
   levelSpeed: 100
   winScene: Main Menu
   loseScene: Level5
-  obstacleProbability: 0.1
+  obstacleProbability: 0.4
   maxObstacles: 12
-  enemyProbability: 0.05
-  maxEnemies: 2
+  enemyProbability: 0.13
+  maxEnemies: 5
   powerupProbability: 0.01
   maxPowerUp: 2
   levelMaterial: {fileID: 2100000, guid: e76d2a1e1998b7c47baddbf50bd2c171, type: 2}

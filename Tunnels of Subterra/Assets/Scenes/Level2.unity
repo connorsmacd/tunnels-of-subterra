@@ -976,9 +976,9 @@ MonoBehaviour:
   levelSpeed: 100
   winScene: Level3
   loseScene: Level2
-  obstacleProbability: 0.1
+  obstacleProbability: 0.13
   maxObstacles: 12
-  enemyProbability: 0.1
+  enemyProbability: 0.05
   maxEnemies: 2
   powerupProbability: 0.01
   maxPowerUp: 2
@@ -1018,7 +1018,7 @@ MonoBehaviour:
     xVariance: 2.5
   enemyParent: {fileID: 1551441740}
   maxLength: -1
-  maxTime: 300
+  maxTime: 200
   maxEnemyKills: -1
 --- !u!114 &711547608
 MonoBehaviour:
