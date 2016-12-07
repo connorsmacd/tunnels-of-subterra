@@ -1034,8 +1034,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSpeed: 100
-  winScene: Level
-  loseScene: Level
+  winScene: Level5
+  loseScene: Level4
   obstacleProbability: 0.1
   maxObstacles: 12
   enemyProbability: 0.05
