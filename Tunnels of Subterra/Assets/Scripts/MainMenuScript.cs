@@ -99,6 +99,31 @@ public class MainMenuScript : MonoBehaviour
         PlayerPrefs.DeleteAll();
         populateHighScores();
     }
+    public void OnLevel1()
+    {
+        Debug.Log("Loading Level 1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Test Level");
+    }
+    public void OnLevel2()
+    {
+        Debug.Log("Loading Level 2");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
+    }
+    public void OnLevel3()
+    {
+        Debug.Log("Loading Level 3");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level2");
+    }
+    public void OnLevel4()
+    {
+        Debug.Log("Loading Level 4");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level3");
+    }
+    public void OnLevel5()
+    {
+        Debug.Log("Loading Level 5");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level4");
+    }
     void changeMenu(MenuStates menu)
     {
         //Debug.Log(currentState);

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44711798, g: 0.4973933, b: 0.5761539, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -165,7 +165,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 79085805}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1888936642}
+        m_MethodName: OnLevel4
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &79085805
@@ -532,7 +543,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 406744431}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1888936642}
+        m_MethodName: OnLevel5
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &406744431
@@ -648,7 +670,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 666902569}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1888936642}
+        m_MethodName: OnLevel1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &666902569
@@ -759,7 +792,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 700013383}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1888936642}
+        m_MethodName: OnLevel3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &700013383
@@ -1981,7 +2025,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1888936641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 241b3e0a02bfed24b88782cd66e7bf57, type: 3}
+  m_Script: {fileID: 11500000, guid: 90a666c51d2c5034ba11a47791348a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
@@ -1997,11 +2041,9 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  mainView: {fileID: 1000011683618274, guid: 9cd7cbca0815cd3499d589340176d962, type: 2}
-  beforeStartView: {fileID: 1000010212269818, guid: 96e2beca31b7173418cc29f8d8381ca6,
-    type: 2}
-  highScoresView: {fileID: 1000013170936364, guid: 79366bfa241a5f54b87aed23f3ffa2df,
-    type: 2}
+  mainView: {fileID: 0}
+  beforeStartView: {fileID: 0}
+  highScoresView: {fileID: 0}
   levelSelectionView: {fileID: 0}
   beforeLevelStartView: {fileID: 0}
   inputName: {fileID: 0}
@@ -2218,7 +2260,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1992469587}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1888936642}
+        m_MethodName: OnLevel2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1992469587
